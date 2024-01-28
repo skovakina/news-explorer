@@ -1,0 +1,24 @@
+.header {
+  background: url(../images/hero.jpg) no-repeat 50% / cover;
+  height: 576px;
+  color: #fff;
+  font-style: normal;
+  font-family: 'Roboto Slab';
+  font-weight: 400;
+  line-height: 64px;
+}
+
+.header__box {
+  margin: 80px auto;
+  width: 608px;
+}
+
+.header__title {
+  font-size: 60px;
+}
+
+.header__subtitle {
+  font-size: 18px;
+  line-height: 24px;
+  margin-top: 32px;
+}

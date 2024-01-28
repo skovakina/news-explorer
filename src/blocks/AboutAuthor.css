@@ -1,0 +1,39 @@
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 464px;
+  width: 100%;
+  max-width: 1232px;
+  margin: 80px auto;
+  /* font */
+  color: #1a1b22;
+  font-family: 'Roboto';
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.about__image {
+  width: 464px;
+  height: 464px;
+  border-radius: 1000px;
+  margin: auto;
+  background: url(../images/hero.jpg) no-repeat 50% / cover;
+}
+
+.about__content {
+  margin-top: 50px;
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about__title {
+  font-family: 'Roboto Slab';
+  font-size: 40px;
+  line-height: 46px;
+}
+
+.about__description {
+}
