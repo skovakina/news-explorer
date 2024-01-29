@@ -3,7 +3,7 @@ import '../blocks/Footer.css';
 
 import { NavLink } from 'react-router-dom';
 
-export default function Footer({}) {
+export default function Footer() {
   return (
     <footer className="footer">
       <p className="footer__credentials">© 2023 Supersite, Powered by News API</p>

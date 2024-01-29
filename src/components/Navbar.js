@@ -4,7 +4,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 import { NavLink } from 'react-router-dom';
 
-export default function Navbar({}) {
+export default function Navbar({ openPopupRegister }) {
   const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
   const { isLoggedIn, currentUser } = useContext(CurrentUserContext);
 
@@ -19,7 +19,7 @@ export default function Navbar({}) {
             <NavLink to="/" className="nav__navbar-link">
               <p className="nav__navbar-link-text">Home</p>
             </NavLink>
-            <button type="button" className="nav__navbar-button">
+            <button onClick={openPopupRegister} type="button" className="nav__navbar-button">
               Sign Up
             </button>
           </div>
