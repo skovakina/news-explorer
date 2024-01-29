@@ -1,14 +1,17 @@
 .header {
   background: url(../images/hero.jpg) no-repeat 50% / cover;
-  height: 576px;
+  height: 100%;
   color: #fff;
   font-style: normal;
   font-family: 'Roboto Slab';
   font-weight: 400;
   line-height: 64px;
+  display: flex;
+  flex-direction: column;
 }
 
 .header__box {
+  height: 100%;
   margin: 80px auto;
   width: 608px;
 }

@@ -1,12 +1,7 @@
 import { React, useState, useEffect } from 'react';
-import ModalWithForm from './PopupWithForm';
+import PopupWithForm from './PopupWithForm';
 
-export default function PopupRegister({
-  handleClosePopup,
-  // onAddItem,
-  isOpen,
-  openPopupSignIn,
-}) {
+export default function PopupRegister({ handleClosePopup, onSubmit, isOpen, openPopupSignIn }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -32,9 +27,7 @@ export default function PopupRegister({
 
   const handleSubmitItem = (event) => {
     event.preventDefault();
-    console.log('submit');
-    // const data = { name, email, password, avatar };
-    // onAddItem(data);
+    onSubmit({ name, email, password });
   };
 
   const secondaryButton = (
@@ -47,7 +40,7 @@ export default function PopupRegister({
   );
 
   return (
-    <ModalWithForm
+    <PopupWithForm
       type="register"
       title="Sign up"
       button="Sign up"
@@ -100,6 +93,6 @@ export default function PopupRegister({
         value={name}
       />
       <span className="popup__input-error card-title-error"></span>
-    </ModalWithForm>
+    </PopupWithForm>
   );
 }

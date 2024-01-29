@@ -13,7 +13,7 @@ export default function ModalWithForm({ children, type, title, button, secondary
         <form onSubmit={onSubmit} className="popup__form" name="newClothesForm">
           {children}
           <div className="popup__buttons">
-            <button disabled type="submit" className="popup__btn-submit">
+            <button type="submit" className="popup__btn-submit">
               {button}
             </button>
             {secondaryButton && secondaryButton}

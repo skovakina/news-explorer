@@ -11,6 +11,8 @@ import Header from './Header';
 import Footer from './Footer';
 import AboutAuthor from './AboutAuthor';
 import PopupRegister from './PopupRegister';
+import PopupSuccess from './PopupSuccess';
+
 //  context
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 //css
@@ -22,6 +24,10 @@ function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [activeModal, setActiveModal] = useState('');
 
+  const closePopup = () => {
+    setActiveModal('');
+  };
+
   const openPopupRegister = () => {
     setActiveModal('register');
   };
@@ -30,8 +36,18 @@ function App() {
     setActiveModal('signin');
   };
 
-  const closePopup = () => {
-    setActiveModal('');
+  const openPopupSuccess = () => {
+    setActiveModal('success');
+  };
+
+  const handleSignUp = (data) => {
+    console.log('sign up', data);
+    openPopupSuccess();
+  };
+
+  const handleSignIn = (data) => {
+    console.log('sign in', data);
+    closePopup();
   };
 
   return (
@@ -49,7 +65,7 @@ function App() {
             <PopupRegister
               handleClosePopup={closePopup}
               isOpen={activeModal === 'register'}
-              // onAddItem={handleSignup}
+              onSubmit={handleSignUp}
               openPopupSignIn={openPopupSignIn}
             />
           )}
@@ -57,10 +73,12 @@ function App() {
             <PopupSignIn
               handleClosePopup={closePopup}
               isOpen={activeModal === 'signin'}
-              // onAddItem={handleSignup}
+              onSubmit={handleSignIn}
               openPopupRegister={openPopupRegister}
             />
           )}
+
+          {activeModal === 'success' && <PopupSuccess handleClosePopup={closePopup} isOpen={activeModal === 'success'} />}
 
           <Footer />
         </BrowserRouter>

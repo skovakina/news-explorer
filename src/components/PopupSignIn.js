@@ -1,12 +1,7 @@
 import { React, useState, useEffect } from 'react';
-import ModalWithForm from './PopupWithForm';
+import PopupWithForm from './PopupWithForm';
 
-export default function PopupSignIn({
-  handleClosePopup,
-  // onAddItem,
-  isOpen,
-  openPopupRegister,
-}) {
+export default function PopupSignIn({ handleClosePopup, onSubmit, isOpen, openPopupRegister }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -29,8 +24,7 @@ export default function PopupSignIn({
   const handleSubmitItem = (event) => {
     event.preventDefault();
     console.log('submit');
-    // const data = { name, email, password, avatar };
-    // onAddItem(data);
+    onSubmit({ email, password });
   };
 
   const secondaryButton = (
@@ -43,7 +37,7 @@ export default function PopupSignIn({
   );
 
   return (
-    <ModalWithForm
+    <PopupWithForm
       type="login"
       title="Sign in"
       button="Sign in"
@@ -80,6 +74,6 @@ export default function PopupSignIn({
         value={password}
       />
       <span className="popup__input-error password-error"></span>
-    </ModalWithForm>
+    </PopupWithForm>
   );
 }
