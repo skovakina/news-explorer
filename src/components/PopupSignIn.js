@@ -1,19 +1,17 @@
 import { React, useState, useEffect } from 'react';
 import ModalWithForm from './PopupWithForm';
 
-export default function PopupRegister({
+export default function PopupSignIn({
   handleClosePopup,
   // onAddItem,
   isOpen,
-  openPopupSignIn,
+  openPopupRegister,
 }) {
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   useEffect(() => {
     if (isOpen) {
-      setName('');
       setEmail('');
       setPassword('');
     }
@@ -21,9 +19,7 @@ export default function PopupRegister({
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    if (name === 'name') {
-      setName(value);
-    } else if (name === 'email') {
+    if (name === 'email') {
       setEmail(value);
     } else if (name === 'password') {
       setPassword(value);
@@ -40,17 +36,17 @@ export default function PopupRegister({
   const secondaryButton = (
     <div className="popup__secondary-btn-box">
       <p className="">or</p>
-      <button onClick={openPopupSignIn} type="button" className="popup__btn_secondary">
-        Sign in
+      <button onClick={openPopupRegister} type="button" className="popup__btn_secondary">
+        Sign up
       </button>
     </div>
   );
 
   return (
     <ModalWithForm
-      type="register"
-      title="Sign up"
-      button="Sign up"
+      type="login"
+      title="Sign in"
+      button="Sign in"
       handleClosePopup={handleClosePopup}
       onSubmit={handleSubmitItem}
       secondaryButton={secondaryButton}
@@ -84,22 +80,6 @@ export default function PopupRegister({
         value={password}
       />
       <span className="popup__input-error password-error"></span>
-      <label htmlFor="name" className="popup__label">
-        Username
-      </label>
-      <input
-        required
-        type="text"
-        id="name"
-        minLength="2"
-        maxLength="30"
-        name="name"
-        className="popup__form-input"
-        placeholder="Name"
-        onChange={handleInputChange}
-        value={name}
-      />
-      <span className="popup__input-error card-title-error"></span>
     </ModalWithForm>
   );
 }

@@ -15,6 +15,7 @@ import PopupRegister from './PopupRegister';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 //css
 import '../blocks/App.css';
+import PopupSignIn from './PopupSignIn';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
@@ -23,6 +24,10 @@ function App() {
 
   const openPopupRegister = () => {
     setActiveModal('register');
+  };
+
+  const openPopupSignIn = () => {
+    setActiveModal('signin');
   };
 
   const closePopup = () => {
@@ -45,9 +50,18 @@ function App() {
               handleClosePopup={closePopup}
               isOpen={activeModal === 'register'}
               // onAddItem={handleSignup}
-              openPopup={openPopupRegister}
+              openPopupSignIn={openPopupSignIn}
             />
           )}
+          {activeModal === 'signin' && (
+            <PopupSignIn
+              handleClosePopup={closePopup}
+              isOpen={activeModal === 'signin'}
+              // onAddItem={handleSignup}
+              openPopupRegister={openPopupRegister}
+            />
+          )}
+
           <Footer />
         </BrowserRouter>
       </CurrentUserContext.Provider>
