@@ -1,3 +1,8 @@
+:root {
+  --color-dark: #1a1b22;
+  --color-light: #fff;
+}
+
 .nav {
   position: absolute;
   left: 0;
@@ -10,7 +15,34 @@
   height: 80px;
   width: 100%;
   max-width: 1232px;
-  color: #fff;
+}
+
+.nav_theme_dark {
+  color: var(--color-dark);
+}
+
+.nav_theme_light {
+  color: var(--color-light);
+}
+
+.nav_theme_dark .nav__navbar-button,
+.nav_theme_light .nav__navbar-button {
+  color: currentColor;
+  border: 1px solid currentColor;
+}
+
+.nav_theme_dark .nav__navbar-link,
+.nav_theme_light .nav__navbar-link,
+.nav_theme_dark .nav__navbar-link:active,
+.nav_theme_light .nav__navbar-link:active,
+.nav_theme_dark .nav__navbar-link:visited,
+.nav_theme_light .nav__navbar-link:visited {
+  color: currentColor;
+}
+
+.nav_theme_dark .nav__navbar-link_active,
+.nav_theme_light .nav__navbar-link_active {
+  border-bottom: 3px solid currentColor;
 }
 
 .nav__logo {
@@ -29,30 +61,24 @@
 }
 
 .nav__navbar-button,
-.nav__navbar-link,
-.nav__navbar-link:active,
-.nav__navbar-link:visited {
+.nav__navbar-link {
   height: 80px;
   padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: #fff;
   text-align: center;
   cursor: pointer;
   font-family: 'Roboto';
   font-size: 18px;
   font-weight: 500;
   line-height: 24px; /* 133.333% */
-  border-bottom: 3px solid #fff;
 }
 
 .nav__navbar-button {
   width: 176px;
   height: 48px;
   border-radius: 100px;
-  border: 1px solid #fff;
   background-color: transparent;
-  color: #fff;
 }

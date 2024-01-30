@@ -22,7 +22,7 @@ import PopupSignIn from './PopupSignIn';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(true);
   const [activeModal, setActiveModal] = useState('');
 
   const closePopup = () => {
@@ -46,6 +46,10 @@ function App() {
     openPopupSuccess();
   };
 
+  const handleLogout = () => {
+    //   setLoggedIn(false);
+  };
+
   const handleSignIn = (data) => {
     console.log('sign in', data);
     closePopup();
@@ -60,7 +64,7 @@ function App() {
         }}
       >
         <BrowserRouter>
-          <Navbar openPopupRegister={openPopupRegister} />
+          <Navbar openPopupRegister={openPopupRegister} handleLogout={handleLogout} />
 
           <Switch>
             {activeModal === 'register' && (
@@ -81,7 +85,7 @@ function App() {
             )}
 
             {activeModal === 'success' && <PopupSuccess handleClosePopup={closePopup} isOpen={activeModal === 'success'} />}
-            <Route exact path="/saved">
+            <Route exact path="/saved-news">
               <SavedNews />
             </Route>
             <Route exact path="/">

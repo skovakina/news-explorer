@@ -2,21 +2,31 @@ import React, { useContext } from 'react';
 import '../blocks/Navbar.css';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
-export default function Navbar({ openPopupRegister }) {
-  const currentDate = new Date().toLocaleString('default', { month: 'long', day: 'numeric' });
+export default function Navbar({ openPopupRegister, handleLogout }) {
   const { isLoggedIn, currentUser } = useContext(CurrentUserContext);
+  const location = useLocation();
+  console.log(isLoggedIn);
+
+  const handleThemeChange = () => {
+    if (location.pathname === '/') {
+      return 'nav_theme_light';
+    } else if (location.pathname === '/saved-news') {
+      return 'nav_theme_dark';
+    }
+    return '';
+  };
 
   return (
-    <nav className="nav">
+    <nav className={`nav ${handleThemeChange()}`}>
       <div className="nav__logo">
         <p>News Explorer</p>
       </div>
       <div className="nav__navbar">
         {!isLoggedIn ? (
           <div className="nav__navbar-links">
-            <NavLink to="/" className="nav__navbar-link">
+            <NavLink to="/" className="nav__navbar-link" activeClassName="nav__navbar-link_active">
               <p className="nav__navbar-link-text">Home</p>
             </NavLink>
             <button onClick={openPopupRegister} type="button" className="nav__navbar-button">
@@ -24,14 +34,16 @@ export default function Navbar({ openPopupRegister }) {
             </button>
           </div>
         ) : (
-          <div className="nav__profile">
-            <button type="button" className="nav__profile-add-clothes-btn">
-              + Add clothes
+          <div className="nav__navbar-links">
+            <NavLink exact to="/" className="nav__navbar-link" activeClassName="nav__navbar-link_active">
+              <p className="nav__navbar-link-text">Home</p>
+            </NavLink>
+            <NavLink to="/saved-news" className="nav__navbar-link" activeClassName="nav__navbar-link_active">
+              <p className="nav__navbar-link-text">Saved articles</p>
+            </NavLink>
+            <button onClick={handleLogout} type="button" className="nav__navbar-button">
+              Logout
             </button>
-            {/* <NavLink to="/" className="header__profile-link">
-              <p className="header__profile-user-name"></p>
-              <img alt="Avatar" className="header__profile-user-avatar" />
-            </NavLink> */}
           </div>
         )}
       </div>
