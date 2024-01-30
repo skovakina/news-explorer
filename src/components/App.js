@@ -11,6 +11,8 @@ import PopupRegister from './PopupRegister';
 import PopupSuccess from './PopupSuccess';
 import Navbar from './Navbar';
 import SavedNewsHeader from './SavedNewsHeader';
+import SavedNews from './SavedNews';
+import NewsCardList from './NewsCardList';
 
 //  context
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
@@ -80,13 +82,12 @@ function App() {
 
             {activeModal === 'success' && <PopupSuccess handleClosePopup={closePopup} isOpen={activeModal === 'success'} />}
             <Route exact path="/saved">
-              <SavedNewsHeader />
-              {/* saved news Header
-                  Saved news */}
+              <SavedNews />
             </Route>
             <Route exact path="/">
               <Header />
               <AboutAuthor />
+              <NewsCardList />
             </Route>
           </Switch>
           <Footer />
