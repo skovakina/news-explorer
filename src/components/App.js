@@ -1,7 +1,4 @@
-import {
-  BrowserRouter,
-  //  Route, Switch
-} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { React, useState } from 'react';
 //  variables
 
@@ -12,6 +9,8 @@ import Footer from './Footer';
 import AboutAuthor from './AboutAuthor';
 import PopupRegister from './PopupRegister';
 import PopupSuccess from './PopupSuccess';
+import Navbar from './Navbar';
+import SavedNewsHeader from './SavedNewsHeader';
 
 //  context
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
@@ -59,27 +58,37 @@ function App() {
         }}
       >
         <BrowserRouter>
-          <Header openPopupRegister={openPopupRegister} />
-          <AboutAuthor />
-          {activeModal === 'register' && (
-            <PopupRegister
-              handleClosePopup={closePopup}
-              isOpen={activeModal === 'register'}
-              onSubmit={handleSignUp}
-              openPopupSignIn={openPopupSignIn}
-            />
-          )}
-          {activeModal === 'signin' && (
-            <PopupSignIn
-              handleClosePopup={closePopup}
-              isOpen={activeModal === 'signin'}
-              onSubmit={handleSignIn}
-              openPopupRegister={openPopupRegister}
-            />
-          )}
+          <Navbar openPopupRegister={openPopupRegister} />
 
-          {activeModal === 'success' && <PopupSuccess handleClosePopup={closePopup} isOpen={activeModal === 'success'} />}
+          <Switch>
+            {activeModal === 'register' && (
+              <PopupRegister
+                handleClosePopup={closePopup}
+                isOpen={activeModal === 'register'}
+                onSubmit={handleSignUp}
+                openPopupSignIn={openPopupSignIn}
+              />
+            )}
+            {activeModal === 'signin' && (
+              <PopupSignIn
+                handleClosePopup={closePopup}
+                isOpen={activeModal === 'signin'}
+                onSubmit={handleSignIn}
+                openPopupRegister={openPopupRegister}
+              />
+            )}
 
+            {activeModal === 'success' && <PopupSuccess handleClosePopup={closePopup} isOpen={activeModal === 'success'} />}
+            <Route exact path="/saved">
+              <SavedNewsHeader />
+              {/* saved news Header
+                  Saved news */}
+            </Route>
+            <Route exact path="/">
+              <Header />
+              <AboutAuthor />
+            </Route>
+          </Switch>
           <Footer />
         </BrowserRouter>
       </CurrentUserContext.Provider>

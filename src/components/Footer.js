@@ -9,14 +9,14 @@ export default function Footer() {
       <p className="footer__credentials">© 2023 Supersite, Powered by News API</p>
 
       <div className="footer__links">
-        <NavLink to="/" className="footer__link">
+        <NavLink to="" className="footer__link">
           Home
         </NavLink>
-        <NavLink to="/" className="footer__link">
+        <NavLink to="" className="footer__link">
           TripleTen
         </NavLink>
         <div className="footer__links-social">
-          <NavLink to="/" className="footer__link">
+          <NavLink to="" className="footer__link">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
                 fill-rule="evenodd"
@@ -26,7 +26,7 @@ export default function Footer() {
               />
             </svg>
           </NavLink>
-          <NavLink>
+          <NavLink to="">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
               <g clip-path="url(#clip0_22618_604)">
                 <path
