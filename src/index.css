@@ -1,5 +1,10 @@
 @import url(./vendor/fonts.css);
 
+:root {
+  --color-dark: #1a1b22;
+  --main-white: #fff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +12,6 @@
 }
 
 body {
-  background: #f3f3f3;
   /* fonts */
   color: #1a1b22;
   font-family: 'Roboto', sans-serif;

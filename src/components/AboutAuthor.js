@@ -3,7 +3,7 @@ import '../blocks/AboutAuthor.css';
 
 export default function AboutAuthor() {
   return (
-    <div className="about">
+    <section className="about">
       <image src="" className="about__image"></image>
       <div className="about__content">
         <h2 className="about__title">About the Author</h2>
@@ -16,6 +16,6 @@ export default function AboutAuthor() {
           proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
       </div>
-    </div>
+    </section>
   );
 }

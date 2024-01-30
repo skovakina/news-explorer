@@ -1,11 +1,10 @@
 .news-card-list {
-  background: #f5f6f7;
 }
 
 .news-card-list__list {
   width: 100%;
   max-width: 1232px;
-  margin: 62px auto;
+  margin: 0px auto;
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(auto-fill, 400px);

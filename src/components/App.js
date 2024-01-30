@@ -13,6 +13,8 @@ import Navbar from './Navbar';
 import SavedNewsHeader from './SavedNewsHeader';
 import SavedNews from './SavedNews';
 import NewsCardList from './NewsCardList';
+import Preloader from './Preloader';
+import SearchResults from './SearchResults';
 
 //  context
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
@@ -90,8 +92,8 @@ function App() {
             </Route>
             <Route exact path="/">
               <Header />
+              <SearchResults />
               <AboutAuthor />
-              <NewsCardList />
             </Route>
           </Switch>
           <Footer />

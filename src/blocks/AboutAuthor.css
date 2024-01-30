@@ -5,6 +5,7 @@
   width: 100%;
   max-width: 1232px;
   margin: 80px auto;
+  background: var(--main-white, #fff);
   /* font */
   color: #1a1b22;
   font-family: 'Roboto';
@@ -33,7 +34,4 @@
   font-family: 'Roboto Slab';
   font-size: 40px;
   line-height: 46px;
-}
-
-.about__description {
 }
