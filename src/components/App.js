@@ -10,10 +10,7 @@ import AboutAuthor from './AboutAuthor';
 import PopupRegister from './PopupRegister';
 import PopupSuccess from './PopupSuccess';
 import Navbar from './Navbar';
-import SavedNewsHeader from './SavedNewsHeader';
 import SavedNews from './SavedNews';
-import NewsCardList from './NewsCardList';
-import Preloader from './Preloader';
 import SearchResults from './SearchResults';
 
 //  context
@@ -24,7 +21,7 @@ import PopupSignIn from './PopupSignIn';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
-  const [isLoggedIn, setLoggedIn] = useState(true);
+  const [isLoggedIn, setLoggedIn] = useState(false);
   const [activeModal, setActiveModal] = useState('');
 
   const closePopup = () => {
@@ -49,12 +46,18 @@ function App() {
   };
 
   const handleLogout = () => {
-    //   setLoggedIn(false);
+    setLoggedIn(false);
   };
 
   const handleSignIn = (data) => {
     console.log('sign in', data);
+    setCurrentUser(data);
+    setLoggedIn(true);
     closePopup();
+  };
+
+  const handleNewsMark = (isMarked) => {
+    console.log('click');
   };
 
   return (
@@ -69,35 +72,34 @@ function App() {
           <Navbar openPopupRegister={openPopupRegister} handleLogout={handleLogout} />
 
           <Switch>
-            {activeModal === 'register' && (
-              <PopupRegister
-                handleClosePopup={closePopup}
-                isOpen={activeModal === 'register'}
-                onSubmit={handleSignUp}
-                openPopupSignIn={openPopupSignIn}
-              />
-            )}
-            {activeModal === 'signin' && (
-              <PopupSignIn
-                handleClosePopup={closePopup}
-                isOpen={activeModal === 'signin'}
-                onSubmit={handleSignIn}
-                openPopupRegister={openPopupRegister}
-              />
-            )}
-
             {activeModal === 'success' && <PopupSuccess handleClosePopup={closePopup} isOpen={activeModal === 'success'} />}
             <Route exact path="/saved-news">
-              <SavedNews />
+              <SavedNews handleNewsMark={handleNewsMark} />
             </Route>
             <Route exact path="/">
               <Header />
-              <SearchResults />
+              <SearchResults handleNewsMark={handleNewsMark} />
               <AboutAuthor />
             </Route>
           </Switch>
           <Footer />
         </BrowserRouter>
+        {activeModal === 'register' && (
+          <PopupRegister
+            handleClosePopup={closePopup}
+            isOpen={activeModal === 'register'}
+            onSubmit={handleSignUp}
+            openPopupSignIn={openPopupSignIn}
+          />
+        )}
+        {activeModal === 'signin' && (
+          <PopupSignIn
+            handleClosePopup={closePopup}
+            isOpen={activeModal === 'signin'}
+            onSubmit={handleSignIn}
+            openPopupRegister={openPopupRegister}
+          />
+        )}
       </CurrentUserContext.Provider>
     </div>
   );

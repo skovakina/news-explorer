@@ -36,7 +36,7 @@
   padding: 8px 22px;
 }
 
-.news-card__delete {
+.news-card__icon {
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -44,19 +44,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
-.news-card__delete-image {
+.news-card__image {
   width: 24px;
   height: 24px;
-  background-image: url(../images/delete-icon.svg);
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0.5;
   transition: opacity linear 0.1s;
 }
 
-.news-card__delete:hover .news-card__delete-image {
+.news-card__image_type_bookmark {
+  background-image: url(../images/bookmark-icon-default.svg);
+}
+
+.news-card__image_type_bookmark:hover {
+  opacity: 1;
+}
+
+.news-card__image_type_bookmark-marked {
+  background-image: url(../images/bookmark-icon-marked.svg);
+  opacity: 1;
+}
+.news-card__image_type_delete {
+  background-image: url(../images/delete-icon.svg);
+}
+
+.news-card__icon:hover .news-card__image_type_delete {
   opacity: 1;
 }
 
