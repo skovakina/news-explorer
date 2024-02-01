@@ -41,7 +41,7 @@ export default function PopupRegister({ handleClosePopup, onSubmit, isOpen, open
 
   return (
     <PopupWithForm
-      type="register"
+      btnType={'submit'}
       title="Sign up"
       button="Sign up"
       handleClosePopup={handleClosePopup}

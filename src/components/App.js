@@ -73,7 +73,6 @@ function App() {
           <Navbar openPopupRegister={openPopupRegister} handleLogout={handleLogout} />
 
           <Switch>
-            {activeModal === 'success' && <PopupSuccess handleClosePopup={closePopup} isOpen={activeModal === 'success'} />}
             <ProtectedRoute isLoggedIn={isLoggedIn} path="/saved-news">
               <SavedNews handleNewsMark={handleNewsMark} />
             </ProtectedRoute>
@@ -85,6 +84,9 @@ function App() {
           </Switch>
           <Footer />
         </BrowserRouter>
+        {activeModal === 'success' && (
+          <PopupSuccess handleClosePopup={closePopup} isOpen={activeModal === 'success'} openPopupSignIn={openPopupSignIn} />
+        )}
         {activeModal === 'register' && (
           <PopupRegister
             handleClosePopup={closePopup}

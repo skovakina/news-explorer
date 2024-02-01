@@ -1,4 +1,6 @@
 import React from 'react';
+import facebook from '../images/facebook-icon.svg';
+import github from '../images/github-icon.svg';
 import '../blocks/Footer.css';
 
 import { NavLink } from 'react-router-dom';
@@ -12,35 +14,16 @@ export default function Footer() {
         <NavLink to="" className="footer__link">
           Home
         </NavLink>
-        <NavLink to="" className="footer__link">
+        <a href="https://tripleten.com/" className="footer__link">
           TripleTen
-        </NavLink>
+        </a>
         <div className="footer__links-social">
-          <NavLink to="" className="footer__link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M11.9998 1.89453C6.41678 1.89453 1.89453 6.42298 1.89453 11.9998C1.89453 16.4662 4.7915 20.2503 8.80507 21.5902C9.30754 21.6832 9.49364 21.3731 9.49364 21.1001C9.49364 20.8582 9.48744 20.2254 9.48123 19.3818C6.67111 19.9897 6.07559 18.0295 6.07559 18.0295C5.61654 16.8632 4.95278 16.5531 4.95278 16.5531C4.03469 15.9265 5.02102 15.9389 5.02102 15.9389C6.03217 16.0134 6.57186 16.9811 6.57186 16.9811C7.47135 18.5257 8.93534 18.0791 9.51225 17.8185C9.6053 17.1672 9.86584 16.7205 10.1512 16.4662C7.90558 16.2119 5.54831 15.3434 5.54831 11.4725C5.54831 10.3683 5.93912 9.46883 6.59047 8.76164C6.48501 8.50731 6.13762 7.47755 6.68972 6.088C6.68972 6.088 7.53958 5.81505 9.46882 7.12396C10.2753 6.90064 11.1375 6.78898 11.9998 6.78277C12.8559 6.78898 13.7243 6.90064 14.5308 7.12396C16.46 5.81505 17.3099 6.088 17.3099 6.088C17.862 7.47755 17.5146 8.50731 17.4091 8.76164C18.0543 9.46883 18.4451 10.3683 18.4451 11.4725C18.4451 15.3558 16.0816 16.2057 13.8298 16.46C14.1896 16.7702 14.5184 17.3905 14.5184 18.3334C14.5184 19.6857 14.5059 20.7713 14.5059 21.1063C14.5059 21.3793 14.6858 21.6894 15.2007 21.5902C19.2143 20.2503 22.1051 16.4662 22.1051 12.006C22.1051 6.42298 17.5828 1.89453 11.9998 1.89453Z"
-                fill="#191717"
-              />
-            </svg>
-          </NavLink>
-          <NavLink to="">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <g clip-path="url(#clip0_22618_604)">
-                <path
-                  d="M18.8958 0H1.10417C0.494167 0 0 0.494167 0 1.10417V18.8967C0 19.5058 0.494167 20 1.10417 20H10.6833V12.255H8.07667V9.23667H10.6833V7.01083C10.6833 4.4275 12.2608 3.02083 14.5658 3.02083C15.67 3.02083 16.6183 3.10333 16.895 3.14V5.84L15.2967 5.84083C14.0433 5.84083 13.8008 6.43667 13.8008 7.31V9.2375H16.79L16.4008 12.2558H13.8008V20H18.8975C19.5058 20 20 19.5058 20 18.8958V1.10417C20 0.494167 19.5058 0 18.8958 0V0Z"
-                  fill="#191717"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_22618_604">
-                  <rect width="20" height="20" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
-          </NavLink>
+          <a href="https://github.com/skovakina" className="footer__link">
+            <img src={facebook} alt="Facebook" className="footer__links-social-image" />
+          </a>
+          <a href="https://www.facebook.com/svetlana.kovakina" className="footer__link">
+            <img src={github} alt="Github" className="footer__links-social-image" />
+          </a>
         </div>
       </div>
     </footer>

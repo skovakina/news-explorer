@@ -23,8 +23,13 @@
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row-reverse;
   padding: 24px;
+}
+
+.news-card__header_saved {
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 .news-card__category {

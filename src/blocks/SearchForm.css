@@ -14,7 +14,6 @@
   width: 100%;
   fill: #fff;
   border: 1px solid #d1d2d6;
-  backdrop-filter: blur(4px);
   border-radius: 100px;
   padding: 21px 24px;
 
@@ -22,6 +21,10 @@
   font-family: 'Roboto';
   font-size: 16px;
   line-height: 20px;
+}
+
+.search__input:focus {
+  outline: none;
 }
 
 .search__button {
@@ -35,10 +38,19 @@
   border-radius: 100px;
   background: #2f71e5;
   box-shadow: 0px 5px 15px 0px rgba(14, 26, 57, 0.2);
+  cursor: pointer;
 
   /* button */
   font-family: 'Roboto';
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
+}
+
+.search__button:hover {
+  background: #347eff;
+}
+
+.search__button:active {
+  background: #2a65cc;
 }

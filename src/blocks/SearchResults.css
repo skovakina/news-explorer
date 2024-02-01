@@ -7,15 +7,6 @@
   gap: 64px;
 }
 
-.search-results__list {
-  width: 100%;
-  max-width: 1232px;
-  margin: 0px auto;
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(auto-fill, 400px);
-}
-
 .search-results__button {
   border-radius: 80px;
   background: var(--main-white, #fff);

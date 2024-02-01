@@ -2,20 +2,20 @@ import { useEffect, useCallback } from 'react';
 import iconClose from '../images/close-icon.svg';
 import '../blocks/PopupWithForm.css';
 
-export default function ModalWithForm({ children, type, title, button, secondaryButton, handleClosePopup, onSubmit }) {
-  const escFunction = useCallback((event) => {
+export default function ModalWithForm({ children, btnType, title, button, secondaryButton, handleClosePopup, onSubmit, onClick }) {
+  const handleEsc = useCallback((event) => {
     if (event.key === 'Escape') {
       handleClosePopup();
     }
   }, []);
 
   useEffect(() => {
-    document.addEventListener('keydown', escFunction, false);
+    document.addEventListener('keydown', handleEsc, false);
 
     return () => {
-      document.removeEventListener('keydown', escFunction, false);
+      document.removeEventListener('keydown', handleEsc, false);
     };
-  }, [escFunction]);
+  }, [handleEsc]);
 
   const handleOverlayClick = (event) => {
     console.log(event);
@@ -25,7 +25,7 @@ export default function ModalWithForm({ children, type, title, button, secondary
   };
 
   return (
-    <div className={`popup popup__${type}`} onClick={handleOverlayClick}>
+    <div className="popup" onClick={handleOverlayClick}>
       <div className="popup__container popup__container_type_form">
         <button onClick={handleClosePopup} className="popup__btn-close">
           <img src={iconClose} alt="Close" className="popup__btn-close-img" />
@@ -35,7 +35,7 @@ export default function ModalWithForm({ children, type, title, button, secondary
         <form onSubmit={onSubmit} className="popup__form" name="newClothesForm">
           {children}
           <div className="popup__buttons">
-            <button type="submit" className="popup__btn-submit">
+            <button type={btnType} className="popup__btn-submit" onClick={onClick}>
               {button}
             </button>
             {secondaryButton && secondaryButton}

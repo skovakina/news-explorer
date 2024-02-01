@@ -38,7 +38,7 @@ export default function PopupSignIn({ handleClosePopup, onSubmit, isOpen, openPo
 
   return (
     <PopupWithForm
-      type="login"
+      btnType={'submit'}
       title="Sign in"
       button="Sign in"
       handleClosePopup={handleClosePopup}

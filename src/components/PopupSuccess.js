@@ -1,8 +1,18 @@
 import { React, useState, useEffect } from 'react';
 import PopupWithForm from './PopupWithForm';
 
-export default function PopupSignIn({ handleClosePopup, isOpen }) {
+export default function PopupSuccess({ handleClosePopup, isOpen, openPopupSignIn }) {
+  const handleButtonClick = () => {
+    openPopupSignIn();
+  };
+
   return (
-    <PopupWithForm type="success" title="Registration successfully completed!" button="Sign in" handleClosePopup={handleClosePopup}></PopupWithForm>
+    <PopupWithForm
+      btnType={'button'}
+      title="Registration successfully completed!"
+      button="Sign in"
+      handleClosePopup={handleClosePopup}
+      onClick={handleButtonClick}
+    ></PopupWithForm>
   );
 }

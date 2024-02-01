@@ -8,12 +8,11 @@ export default function AboutAuthor() {
       <div className="about__content">
         <h2 className="about__title">About the Author</h2>
         <p className="about__desription">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Hello! My name is Svetlana. I'm a self-driven software engineer based in San Francisco, with a keen focus on creative problem-solving.
         </p>
         <p className="about__desription">
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          My expertise lies in developing dynamic solutions using JavaScript, React, Vue.js, Node, and Express. Passionate about technology, I
+          continually strive to innovate and excel in my field
         </p>
       </div>
     </section>

@@ -39,5 +39,6 @@
 
 .footer__links-social {
   display: flex;
+  align-items: center;
   gap: 28px;
 }
