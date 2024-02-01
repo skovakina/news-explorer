@@ -1,13 +1,16 @@
 import React from 'react';
 import '../blocks/SavedNews.css';
-import NewsCardList from './NewsCardList';
+import NewsCard from './NewsCard';
 import SavedNewsHeader from './SavedNewsHeader';
+import data from '../utils/dummydata.js';
 
 export default function SavedNews({ handleNewsMark }) {
   return (
-    <div>
+    <section>
       <SavedNewsHeader />
-      <NewsCardList handleNewsMark={handleNewsMark} />
-    </div>
+      {data.articles.map((article) => {
+        return <NewsCard key={article._id} article={article} handleNewsMark={handleNewsMark} />;
+      })}
+    </section>
   );
 }

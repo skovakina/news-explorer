@@ -12,6 +12,7 @@ import PopupSuccess from './PopupSuccess';
 import Navbar from './Navbar';
 import SavedNews from './SavedNews';
 import SearchResults from './SearchResults';
+import ProtectedRoute from './ProtectedRoute';
 
 //  context
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
@@ -73,9 +74,9 @@ function App() {
 
           <Switch>
             {activeModal === 'success' && <PopupSuccess handleClosePopup={closePopup} isOpen={activeModal === 'success'} />}
-            <Route exact path="/saved-news">
+            <ProtectedRoute isLoggedIn={isLoggedIn} path="/saved-news">
               <SavedNews handleNewsMark={handleNewsMark} />
-            </Route>
+            </ProtectedRoute>
             <Route exact path="/">
               <Header />
               <SearchResults handleNewsMark={handleNewsMark} />

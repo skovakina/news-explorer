@@ -3,13 +3,10 @@ import React from 'react';
 import NewsCard from './NewsCard';
 import '../blocks/NewsCardList.css';
 
-export default function NewsCardList({ handleNewsMark }) {
+export default function NewsCardList({ children, handleNewsMark }) {
   return (
     <section className="news-card-list">
-      <ul className="news-card-list__list">
-        <NewsCard handleNewsMark={handleNewsMark} />
-        <NewsCard />
-      </ul>
+      <ul className="news-card-list__list">{children}</ul>
     </section>
   );
 }
