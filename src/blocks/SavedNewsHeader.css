@@ -1,26 +1,22 @@
 .saved-news-header {
   height: 100%;
-  font-style: normal;
-  font-family: 'Roboto Slab';
-  font-weight: 400;
-  line-height: 64px;
   display: flex;
   flex-direction: column;
   background: #fff;
-  color: #1a1b22;
 }
 
 .saved-news-header__container {
+  box-sizing: border-box;
   padding: 40px 40px 64px;
   margin: 80px auto 0px;
-  max-width: 1232px;
+  max-width: calc(1232px + 80px);
   width: 100%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 30px;
 }
 
 .saved-news-header__title {
-  color: #1a1b22;
   font-family: 'Roboto Slab';
   font-size: 40px;
   font-style: normal;
@@ -36,7 +32,6 @@
 }
 
 .saved-news-header__text {
-  color: #1a1b22;
   font-family: Roboto;
   font-size: 18px;
   font-style: normal;

@@ -1,8 +1,9 @@
 .about {
   padding: 80px 40px;
-  max-width: 1232px;
+  box-sizing: border-box;
+  max-width: calc(1232px + 80px);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: min-content 1fr;
   gap: 30px;
   margin: auto;
   /* font */
@@ -21,6 +22,8 @@
 }
 
 .about__content {
+  box-sizing: border-box;
+  padding-top: 50px;
   max-width: 600px;
   width: 100%;
   display: flex;
@@ -45,7 +48,8 @@
   }
 
   .about__content {
-    width: 424px;
+    max-width: 424px;
+    padding-top: 0;
   }
 
   .about__title {
