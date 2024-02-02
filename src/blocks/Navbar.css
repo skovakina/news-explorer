@@ -13,6 +13,7 @@
   align-items: center;
   margin: auto;
   max-width: 1232px;
+  padding: 0 40px;
 }
 
 .nav_theme_dark {
@@ -40,7 +41,7 @@
 
 .nav_theme_dark .nav__navbar-link_active,
 .nav_theme_light .nav__navbar-link_active {
-  border-bottom: 3px solid currentColor;
+  box-shadow: 0px -3px 0px 0px currentColor inset;
 }
 
 .nav__logo {
@@ -79,4 +80,21 @@
   height: 48px;
   border-radius: 100px;
   background-color: transparent;
+}
+
+@media screen and (max-width: 900px) {
+  .nav {
+    height: 66px;
+  }
+  .nav__navbar-button {
+    height: 40px;
+    width: 152px;
+  }
+  .nav__navbar-link {
+    height: 66px;
+  }
+
+  .nav__navbar-links {
+    gap: 20px;
+  }
 }

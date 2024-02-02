@@ -4,7 +4,7 @@ import '../blocks/AboutAuthor.css';
 export default function AboutAuthor() {
   return (
     <section className="about">
-      <image src="" className="about__image"></image>
+      <img src="" className="about__image"></img>
       <div className="about__content">
         <h2 className="about__title">About the Author</h2>
         <p className="about__desription">

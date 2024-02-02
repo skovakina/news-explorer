@@ -31,7 +31,7 @@
   position: absolute;
   right: 0px;
   width: 168px;
-  height: 64px;
+  height: 100%;
   flex-shrink: 0;
   color: #fff;
   border: none;
@@ -53,4 +53,15 @@
 
 .search__button:active {
   background: #2a65cc;
+}
+
+@media screen and (max-width: 900px) {
+  .search__container {
+    margin-top: 48px;
+  }
+
+  .search__input {
+    font-size: 16px;
+    line-height: 22px;
+  }
 }

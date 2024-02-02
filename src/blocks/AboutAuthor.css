@@ -1,11 +1,10 @@
 .about {
+  padding: 80px 40px;
+  max-width: 1232px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 464px;
-  width: 100%;
-  max-width: 1232px;
-  margin: 80px auto;
-  background: var(--main-white, #fff);
+  gap: 30px;
+  margin: auto;
   /* font */
   color: #1a1b22;
   font-family: 'Roboto';
@@ -16,13 +15,12 @@
 .about__image {
   width: 464px;
   height: 464px;
-  border-radius: 1000px;
+  border-radius: 50%;
   margin: auto;
   background: url(../images/hero.jpg) no-repeat 50% / cover;
 }
 
 .about__content {
-  margin-top: 50px;
   max-width: 600px;
   width: 100%;
   display: flex;
@@ -32,6 +30,26 @@
 
 .about__title {
   font-family: 'Roboto Slab';
+  font-weight: 400;
   font-size: 40px;
   line-height: 46px;
+}
+
+@media screen and (max-width: 900px) {
+  .about {
+    padding: 40px;
+  }
+  .about__image {
+    width: 232px;
+    height: 232px;
+  }
+
+  .about__content {
+    width: 424px;
+  }
+
+  .about__title {
+    font-size: 30px;
+    line-height: 40px; /* 133.333% */
+  }
 }

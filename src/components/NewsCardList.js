@@ -7,7 +7,7 @@ export default function NewsCardList({ data, handleNewsMark }) {
   return (
     <ul className="news-card-list">
       {data.map((article) => {
-        return <NewsCard key={article._id} article={article} handleNewsMark={handleNewsMark} />;
+        return <NewsCard key={article.source.id} article={article} handleNewsMark={handleNewsMark} />;
       })}
     </ul>
   );
