@@ -7,9 +7,13 @@ import data from '../utils/dummydata.js';
 
 export default function SavedNews({ handleNewsMark }) {
   return (
-    <section>
+    <div className="saved-news">
       <SavedNewsHeader />
-      <NewsCardList handleNewsMark={handleNewsMark} data={data.articles} />
-    </section>
+      <section className="saved-news-list">
+        <div className="saved-news-list__container">
+          <NewsCardList handleNewsMark={handleNewsMark} data={data.articles} />
+        </div>
+      </section>
+    </div>
   );
 }
