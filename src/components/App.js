@@ -70,7 +70,7 @@ function App() {
         }}
       >
         <BrowserRouter>
-          <Navbar openPopupRegister={openPopupRegister} handleLogout={handleLogout} />
+          <Navbar openPopupRegister={openPopupRegister} handleLogout={handleLogout} activeModal={activeModal} />
 
           <Switch>
             <ProtectedRoute isLoggedIn={isLoggedIn} path="/saved-news">

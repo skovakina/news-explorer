@@ -53,3 +53,26 @@
     height: 64px;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .footer {
+    height: 176px;
+  }
+  .footer__container {
+    box-sizing: border-box;
+    height: 176px;
+    padding: 20px 16px;
+    flex-direction: column-reverse;
+  }
+
+  .footer__links {
+    width: 100%;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .footer__links-social {
+    position: absolute;
+
+    right: 16px;
+  }
+}

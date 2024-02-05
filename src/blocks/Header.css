@@ -11,14 +11,18 @@
 }
 
 .header__box {
+  box-sizing: border-box;
+  padding: 0 40px;
   height: 100%;
   margin: 160px auto 80px;
-  width: 608px;
+  width: 100%;
+  max-width: 688px;
 }
 
 .header__title {
   font-size: 60px;
   line-height: 64px;
+  font-weight: 400;
 }
 
 .header__subtitle {
@@ -34,13 +38,18 @@
   }
 
   .header__box {
-    width: 448px;
-
-    height: 100%;
+    width: 100%;
+    max-width: 608px;
     margin: 104px auto 48px;
   }
 
   .header__subtitle {
     margin-top: 16px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header__box {
+    margin-bottom: 86px auto 32px;
   }
 }

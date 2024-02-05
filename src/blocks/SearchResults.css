@@ -50,4 +50,14 @@
   .search-results__container {
     padding: 40px;
   }
+  .search-results__button {
+    height: 56px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .search-results__container {
+    padding: 32px 16px 24px;
+    gap: 21px;
+  }
 }

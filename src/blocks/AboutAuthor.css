@@ -57,3 +57,13 @@
     line-height: 40px; /* 133.333% */
   }
 }
+
+@media screen and (max-width: 400px) {
+  .about {
+    padding: 32px 16px 128px;
+    gap: 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+}

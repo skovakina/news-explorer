@@ -172,3 +172,10 @@
     margin-bottom: 12px;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .news-card {
+    /* width: 224px;
+    height: 420px; */
+  }
+}
