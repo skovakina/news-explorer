@@ -1,21 +1,26 @@
 import React from 'react';
 import '../blocks/SearchResults.css';
 import NewsCardList from './NewsCardList';
-import data from '../utils/dummydata.js';
-// import NotFound from './NotFound';
+import NotFound from './NotFound';
+import Preloader from './Preloader';
 
-export default function SearchResults({ handleNewsMark }) {
-  console.log(data);
+export default function SearchResults({ news, handleNewsMark, isLoading }) {
+  console.log(news);
   return (
     <section className="search-results">
-      <div className="search-results__container">
-        <h2 className="search-results__title">Search results</h2>
-        {/* <NotFound /> */}
-        <NewsCardList handleNewsMark={handleNewsMark} data={data.articles.slice(0, 3)} />
-        <button type="button" className="search-results__button">
-          Show more
-        </button>
-      </div>
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <div className="search-results__container">
+          <h2 className="search-results__title">Search results</h2>
+
+          {news.length === 0 ? <NotFound /> : <NewsCardList handleNewsMark={handleNewsMark} news={news.slice(0, 3)} />}
+
+          <button type="button" className="search-results__button">
+            Show more
+          </button>
+        </div>
+      )}
     </section>
   );
 }

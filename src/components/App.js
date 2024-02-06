@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { React, useState } from 'react';
 //  variables
+//  variables
+import { getNews } from '../utils/NewsApi';
 
 //  components
 
@@ -24,6 +26,9 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [activeModal, setActiveModal] = useState('');
+  const [news, setNews] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [startSearch, setStartSearch] = useState(false);
 
   const closePopup = () => {
     setActiveModal('');
@@ -61,6 +66,20 @@ function App() {
     console.log('click');
   };
 
+  const handleSearch = (data) => {
+    setStartSearch(true);
+    setIsLoading(true);
+    getNews(data)
+      .then((res) => {
+        setNews(res.articles);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsLoading(false);
+      });
+  };
+
   return (
     <div className="App">
       <CurrentUserContext.Provider
@@ -74,11 +93,12 @@ function App() {
 
           <Switch>
             <ProtectedRoute isLoggedIn={isLoggedIn} path="/saved-news">
-              <SavedNews handleNewsMark={handleNewsMark} />
+              <SavedNews handleNewsMark={handleNewsMark} news={news} />
             </ProtectedRoute>
             <Route exact path="/">
-              <Header />
-              <SearchResults handleNewsMark={handleNewsMark} />
+              <Header handleSearch={handleSearch} />
+
+              {startSearch && <SearchResults handleNewsMark={handleNewsMark} news={news} isLoading={isLoading} />}
               <AboutAuthor />
             </Route>
           </Switch>

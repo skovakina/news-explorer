@@ -25,6 +25,11 @@
 
 .search__input:focus {
   outline: none;
+  color: #1a1b22;
+}
+
+.search__input_active {
+  color: #1a1b22;
 }
 
 .search__button {
