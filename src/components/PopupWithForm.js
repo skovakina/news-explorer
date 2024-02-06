@@ -3,11 +3,14 @@ import iconClose from '../images/close-icon.svg';
 import '../blocks/PopupWithForm.css';
 
 export default function ModalWithForm({ children, btnType, title, button, secondaryButton, handleClosePopup, onSubmit, onClick, isValid }) {
-  const handleEsc = useCallback((event) => {
-    if (event.key === 'Escape') {
-      handleClosePopup();
-    }
-  }, []);
+  const handleEsc = useCallback(
+    (event) => {
+      if (event.key === 'Escape') {
+        handleClosePopup();
+      }
+    },
+    [handleClosePopup]
+  );
 
   useEffect(() => {
     document.addEventListener('keydown', handleEsc, false);

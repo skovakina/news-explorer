@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { React } from 'react';
 import PopupWithForm from './PopupWithForm';
 
 export default function PopupSuccess({ handleClosePopup, isOpen, openPopupSignIn }) {

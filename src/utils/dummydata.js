@@ -1,4 +1,4 @@
-export default {
+const data = {
   status: 'ok',
   totalResults: 1726,
   articles: [
@@ -109,3 +109,5 @@ export default {
     },
   ],
 };
+
+export default data;

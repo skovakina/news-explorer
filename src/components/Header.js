@@ -1,6 +1,5 @@
 import React from 'react';
 import '../blocks/Header.css';
-import Navbar from './Navbar';
 import SearchForm from './SearchForm';
 
 export default function Header({ openPopupRegister }) {

@@ -1,6 +1,5 @@
 import React from 'react';
 import '../blocks/NewsCard.css';
-import image from '../images/news-card-image.jpg';
 import { useLocation } from 'react-router-dom';
 
 export default function NewsCard({ key, article, handleNewsMark }) {

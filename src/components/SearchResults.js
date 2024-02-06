@@ -2,9 +2,10 @@ import React from 'react';
 import '../blocks/SearchResults.css';
 import NewsCardList from './NewsCardList';
 import data from '../utils/dummydata.js';
-import NotFound from './NotFound';
+// import NotFound from './NotFound';
 
 export default function SearchResults({ handleNewsMark }) {
+  console.log(data);
   return (
     <section className="search-results">
       <div className="search-results__container">

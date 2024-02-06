@@ -5,7 +5,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { NavLink, useLocation } from 'react-router-dom';
 
 export default function Navbar({ openPopupRegister, handleLogout, activeModal }) {
-  const { isLoggedIn, currentUser } = useContext(CurrentUserContext);
+  const { isLoggedIn } = useContext(CurrentUserContext);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const location = useLocation();
 
