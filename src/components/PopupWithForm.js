@@ -2,7 +2,7 @@ import { useEffect, useCallback } from 'react';
 import iconClose from '../images/close-icon.svg';
 import '../blocks/PopupWithForm.css';
 
-export default function ModalWithForm({ children, btnType, title, button, secondaryButton, handleClosePopup, onSubmit, onClick }) {
+export default function ModalWithForm({ children, btnType, title, button, secondaryButton, handleClosePopup, onSubmit, onClick, isValid }) {
   const handleEsc = useCallback((event) => {
     if (event.key === 'Escape') {
       handleClosePopup();
@@ -18,11 +18,12 @@ export default function ModalWithForm({ children, btnType, title, button, second
   }, [handleEsc]);
 
   const handleOverlayClick = (event) => {
-    console.log(event);
     if (event.target.classList.contains('popup')) {
       handleClosePopup();
     }
   };
+
+  console.log(isValid);
 
   return (
     <div className="popup" onClick={handleOverlayClick}>
@@ -35,7 +36,7 @@ export default function ModalWithForm({ children, btnType, title, button, second
         <form onSubmit={onSubmit} className="popup__form" name="newClothesForm">
           {children}
           <div className="popup__buttons">
-            <button type={btnType} className="popup__btn-submit" onClick={onClick}>
+            <button disabled={!isValid} type={btnType} className="popup__btn-submit" onClick={onClick}>
               {button}
             </button>
             {secondaryButton && secondaryButton}

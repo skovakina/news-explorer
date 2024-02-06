@@ -1,35 +1,16 @@
 import { React, useState, useEffect } from 'react';
 import PopupWithForm from './PopupWithForm';
+import Input from './Input';
+import { useFormValidation } from './UseFormValidation';
 
-export default function PopupRegister({ handleClosePopup, onSubmit, isOpen, openPopupSignIn }) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+export default function PopupRegister({ handleClosePopup, onSubmit, isOpen, openPopupSignIn, isValid }) {
+  const formValidator = useFormValidation();
 
-  useEffect(() => {
-    if (isOpen) {
-      setName('');
-      setEmail('');
-      setPassword('');
-    }
-  }, [isOpen]);
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    if (name === 'name') {
-      setName(value);
-    } else if (name === 'email') {
-      setEmail(value);
-    } else if (name === 'password') {
-      setPassword(value);
-    }
-  };
-
-  const handleSubmitItem = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({ name, email, password });
+    console.log('submit');
+    onSubmit({ email: formValidator.values['email'], password: formValidator.values['password'], name: formValidator.values['name'] });
   };
-
   const secondaryButton = (
     <div className="popup__secondary-btn-box">
       <p className="">or</p>
@@ -45,54 +26,41 @@ export default function PopupRegister({ handleClosePopup, onSubmit, isOpen, open
       title="Sign up"
       button="Sign up"
       handleClosePopup={handleClosePopup}
-      onSubmit={handleSubmitItem}
+      onSubmit={handleSubmit}
       secondaryButton={secondaryButton}
+      isValid={formValidator.isValid}
     >
-      <label htmlFor="email" className="popup__label">
-        Email
-      </label>
-      <input
-        required
+      <Input
+        label="Email"
         type="email"
-        id="email"
         name="email"
-        className="popup__form-input"
         placeholder="Email"
-        onChange={handleInputChange}
-        value={email}
+        value={formValidator.values['email'] || ''}
+        onChange={formValidator.handleChange}
+        error={formValidator.errors['email'] && 'Invalid email address'}
+        isValid={formValidator.isValid}
       />
-      <span className="popup__input-error email-error"></span>
 
-      <label htmlFor="password" className="popup__label">
-        Password
-      </label>
-      <input
-        required
+      <Input
+        label="Password"
         type="password"
-        id="password"
         name="password"
-        className="popup__form-input"
         placeholder="Password"
-        onChange={handleInputChange}
-        value={password}
+        value={formValidator.values['password'] || ''}
+        onChange={formValidator.handleChange}
+        error={formValidator.errors['password'] && 'Invalid password'}
+        isValid={formValidator.isValid}
       />
-      <span className="popup__input-error password-error"></span>
-      <label htmlFor="name" className="popup__label">
-        Username
-      </label>
-      <input
-        required
-        type="text"
-        id="name"
-        minLength="2"
-        maxLength="30"
+      <Input
+        label="Name"
+        type="name"
         name="name"
-        className="popup__form-input"
         placeholder="Name"
-        onChange={handleInputChange}
-        value={name}
+        value={formValidator.values['name'] || ''}
+        onChange={formValidator.handleChange}
+        error={formValidator.errors['name'] && 'Invalid name'}
+        isValid={formValidator.isValid}
       />
-      <span className="popup__input-error card-title-error"></span>
     </PopupWithForm>
   );
 }

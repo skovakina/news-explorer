@@ -1,30 +1,15 @@
 import { React, useState, useEffect } from 'react';
 import PopupWithForm from './PopupWithForm';
+import { useFormValidation } from './UseFormValidation';
+import Input from './Input';
 
 export default function PopupSignIn({ handleClosePopup, onSubmit, isOpen, openPopupRegister }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const formValidator = useFormValidation();
 
-  useEffect(() => {
-    if (isOpen) {
-      setEmail('');
-      setPassword('');
-    }
-  }, [isOpen]);
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    if (name === 'email') {
-      setEmail(value);
-    } else if (name === 'password') {
-      setPassword(value);
-    }
-  };
-
-  const handleSubmitItem = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     console.log('submit');
-    onSubmit({ email, password });
+    onSubmit({ email: formValidator.values['email'], password: formValidator.values['password'] });
   };
 
   const secondaryButton = (
@@ -35,45 +20,38 @@ export default function PopupSignIn({ handleClosePopup, onSubmit, isOpen, openPo
       </button>
     </div>
   );
-
+  console.log(formValidator.isValid);
   return (
     <PopupWithForm
       btnType={'submit'}
       title="Sign in"
       button="Sign in"
       handleClosePopup={handleClosePopup}
-      onSubmit={handleSubmitItem}
+      onSubmit={handleSubmit}
       secondaryButton={secondaryButton}
+      isValid={formValidator.isValid}
     >
-      <label htmlFor="email" className="popup__label">
-        Email
-      </label>
-      <input
-        required
+      <Input
+        label="Email"
         type="email"
-        id="email"
         name="email"
-        className="popup__form-input"
         placeholder="Email"
-        onChange={handleInputChange}
-        value={email}
+        value={formValidator.values['email'] || ''}
+        onChange={formValidator.handleChange}
+        error={formValidator.errors['email'] && 'Invalid email address'}
+        isValid={formValidator.isValid}
       />
-      <span className="popup__input-error email-error"></span>
 
-      <label htmlFor="password" className="popup__label">
-        Password
-      </label>
-      <input
-        required
+      <Input
+        label="Password"
         type="password"
-        id="password"
         name="password"
-        className="popup__form-input"
         placeholder="Password"
-        onChange={handleInputChange}
-        value={password}
+        value={formValidator.values['password'] || ''}
+        onChange={formValidator.handleChange}
+        error={formValidator.errors['password'] && 'Invalid password'}
+        isValid={formValidator.isValid}
       />
-      <span className="popup__input-error password-error"></span>
     </PopupWithForm>
   );
 }
