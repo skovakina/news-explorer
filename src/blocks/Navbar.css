@@ -107,6 +107,11 @@
 @media screen and (max-width: 600px) {
   .nav_opened .nav {
     background-color: #1a1b22;
+    color: var(--main-white);
+  }
+
+  .nav_opened .nav__logo {
+    color: var(--main-white);
   }
 
   .nav_hidden {
@@ -131,6 +136,7 @@
     align-items: flex-start;
     gap: 22px;
     background-color: #1a1b22;
+    color: var(--main-white);
     width: 100vw;
     padding: 72px 16px 24px;
     transition: visibility linear 1s;
@@ -154,6 +160,7 @@
 
   .nav__menu-button {
     background-image: url(../images/menu-icon.svg);
+    /* mask-image: url(../images/menu-icon.svg); */
     background-position: center;
     height: 24px;
     width: 24px;
@@ -164,10 +171,14 @@
     right: 16px;
   }
 
-  .nav__menu-button_close {
-    background-image: url(../images/close-icon.svg);
+  .nav_theme_dark .nav__menu-button {
+    background-image: url(../images/menu-icon-dark.svg);
   }
 
+  .nav_theme_dark .nav__menu-button_close,
+  .nav_theme_light .nav__menu-button_close {
+    background-image: url(../images/close-icon.svg);
+  }
   .nav_theme_dark .nav__link_active,
   .nav_theme_light .nav__link_active {
     box-shadow: none;
