@@ -17,22 +17,6 @@
       "category": "Technology"
     },
     {
-      "_id": 3,
-      "source": {
-        "id": null,
-        "name": "MacRumors"
-      },
-      "author": "Joe Rossignol",
-      "title": "Apple Adds Last MacBook Pro With CD Drive to Obsolete Products List",
-      "description": "Apple today added the Mid 2012 model of the 13-inch MacBook Pro to its obsolete products list worldwide, according to its website.\n\n\n\n\n\nReleased in June 2012, this 13-inch MacBook Pro model was the last Mac with a built-in CD/DVD drive sold by Apple, and it r…",
-      "url": "https://www.macrumors.com/2024/01/31/mid-2012-13-inch-macbook-pro-obsolete/",
-      "urlToImage": "https://images.macrumors.com/t/uYbSuiU049c5r5ZN0EHpmChc2uY=/1842x/article-new/2022/01/13-Inch-MacBook-Pro-Mid-2012.jpg",
-      "publishedAt": "2024-01-31T16:09:11Z",
-      "content": "Apple today added the Mid 2012 model of the 13-inch MacBook Pro to its obsolete products list worldwide, according to its website.\r\nReleased in June 2012, this 13-inch MacBook Pro model was the last … [+783 chars]",
-      "isMarked": true,
-      "category": "Technology"
-    },
-    {
       "_id": 4,
       "source": {
         "id": null,
@@ -63,22 +47,6 @@
       "content": "Apple has failed to properly comply with a court order that requires non-App Store purchasing options be made available to third-party developers, Epic Games has told a judge (via Bloomberg).\r\nThe Su… [+2198 chars]",
       "isMarked": true,
       "category": "Technology"
-    },
-    {
-      "source": {
-        "id": "engadget",
-        "name": "Engadget"
-      },
-      "author": "Mat Smith",
-      "title": "The Morning After: Senate tells social media CEOs they have ‘blood on their hands’",
-      "description": "The CEOs of Meta, Snap, Discord, X and TikTok testified at a high-stakes Senate Judiciary Committee hearing on child exploitation online. During the hearing, Mark Zuckerberg, Evan Spiegel, Jason Citron, Linda Yaccarino and Shou Chew spent nearly four hours be…",
-      "url": "https://www.engadget.com/the-morning-after-senate-tells-social-media-ceos-they-have-blood-on-their-hands-133101841.html",
-      "urlToImage": "https://s.yimg.com/ny/api/res/1.2/U6ANEvW4LNvi4Z9NmpVJoA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MDA-/https://s.yimg.com/os/creatr-uploaded-images/2024-01/d4f97920-c050-11ee-bfec-efd9694783c6",
-      "publishedAt": "2024-02-01T13:31:01Z",
-      "content": "The CEOs of Meta, Snap, Discord, X and TikTok testified at a high-stakes Senate Judiciary Committee hearing on child exploitation online. During the hearing, Mark Zuckerberg, Evan Spiegel, Jason Citr… [+4485 chars]",
-      "isMarked": true,
-      "category": "English (US)",
-      "_id": 8
     },
     {
       "source": {
