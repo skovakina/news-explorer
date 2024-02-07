@@ -2,19 +2,17 @@ import React from 'react';
 import '../blocks/NewsCard.css';
 import { useLocation } from 'react-router-dom';
 
-export default function NewsCard({ key, article, handleNewsMark }) {
+export default function NewsCard({ key, article, handleNewsMark, handleDeleteNews }) {
+  const isMarkedClassName = `news-card__image ${article.isMarked ? 'news-card__image_type_bookmark-marked' : 'news-card__image_type_bookmark'}`;
+
   const location = useLocation();
-  const isMarked = false;
-
-  const isMarkedClassName = `news-card__image ${isMarked ? 'news-card__image_type_bookmark-marked' : 'news-card__image_type_bookmark'}`;
-
   const renderHeader = () => {
     if (location.pathname === '/saved-news') {
       return (
         <div className=" news-card__header   news-card__header_saved">
-          <div className="news-card__category">Category</div>
+          <div className="news-card__category">{article.category}</div>
           <div className="news-card__icon">
-            <div className="news-card__image news-card__image_type_delete"></div>
+            <div className="news-card__image news-card__image_type_delete" onClick={() => handleDeleteNews(article)}></div>
           </div>
         </div>
       );
@@ -22,7 +20,7 @@ export default function NewsCard({ key, article, handleNewsMark }) {
     return (
       <div className="news-card__header">
         <div className="news-card__icon">
-          <div className={isMarkedClassName} onClick={() => handleNewsMark(isMarked)}></div>
+          <div className={isMarkedClassName} onClick={() => handleNewsMark(article)}></div>
         </div>
       </div>
     );

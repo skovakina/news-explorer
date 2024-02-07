@@ -3,12 +3,12 @@ import React from 'react';
 import NewsCard from './NewsCard';
 import '../blocks/NewsCardList.css';
 
-export default function NewsCardList({ news, handleNewsMark }) {
+export default function NewsCardList({ news, handleNewsMark, handleDeleteNews }) {
   console.log(news);
   return (
     <ul className="news-card-list">
       {news.map((article) => {
-        return <NewsCard key={article.source.id} article={article} handleNewsMark={handleNewsMark} />;
+        return <NewsCard article={article} handleNewsMark={handleNewsMark} handleDeleteNews={handleDeleteNews} />;
       })}
     </ul>
   );

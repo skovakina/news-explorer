@@ -5,7 +5,6 @@ import NotFound from './NotFound';
 import Preloader from './Preloader';
 
 export default function SearchResults({ news, handleNewsMark, isLoading }) {
-  console.log(news);
   return (
     <section className="search-results">
       {isLoading ? (

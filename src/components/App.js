@@ -1,9 +1,8 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { React, useState } from 'react';
-//  variables
+import { React, useState, useEffect } from 'react';
 //  variables
 import { getNews } from '../utils/NewsApi';
-
+import { getItems, postItem, deleteItem } from '../utils/serverApi';
 //  components
 
 import Header from './Header';
@@ -29,6 +28,19 @@ function App() {
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [startSearch, setStartSearch] = useState(false);
+  const [savedNews, setSavedNews] = useState([]);
+  const [keyWord, setKeyWord] = useState('');
+
+  useEffect(() => {
+    getItems()
+      .then((items) => {
+        console.log(items);
+        setSavedNews(items);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   const closePopup = () => {
     setActiveModal('');
@@ -62,21 +74,41 @@ function App() {
     closePopup();
   };
 
-  const handleNewsMark = (isMarked) => {
-    console.log('click');
+  const handleNewsMark = (article) => {
+    article.isMarked = true;
+    article.category = keyWord;
+    postItem(article)
+      .then((res) => {
+        setSavedNews([res, ...savedNews]);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
-  const handleSearch = (data) => {
+  const handleSearch = (keyword) => {
     setStartSearch(true);
     setIsLoading(true);
-    getNews(data)
+    getNews(keyword)
       .then((res) => {
         setNews(res.articles);
+        setKeyWord(keyword);
         setIsLoading(false);
       })
       .catch((error) => {
         console.error(error);
         setIsLoading(false);
+      });
+  };
+
+  const handleDeleteNews = (article) => {
+    deleteItem(article._id)
+      .then(() => {
+        const updatedList = savedNews.filter((item) => item._id !== article._id);
+        setSavedNews(updatedList);
+      })
+      .catch((error) => {
+        console.error(error);
       });
   };
 
@@ -93,7 +125,7 @@ function App() {
 
           <Switch>
             <ProtectedRoute isLoggedIn={isLoggedIn} path="/saved-news">
-              <SavedNews handleNewsMark={handleNewsMark} news={news} />
+              <SavedNews handleNewsMark={handleNewsMark} news={savedNews} handleDeleteNews={handleDeleteNews} />
             </ProtectedRoute>
             <Route exact path="/">
               <Header handleSearch={handleSearch} />
