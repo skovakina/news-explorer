@@ -79,22 +79,6 @@
       "isMarked": true,
       "category": "lilac",
       "_id": 11
-    },
-    {
-      "source": {
-        "id": null,
-        "name": "NPR"
-      },
-      "author": "Nathan Rott",
-      "title": "As Ukraine seeks to replenish its depleted army, a divide grows among its civilians",
-      "description": "Ukraine is looking to reform its conscription policies to help bolster troop numbers after nearly two years of war, fueling fears among some civilians who don't want to fight.",
-      "url": "https://www.npr.org/2024/01/31/1226251649/ukraine-russia-war-conscription-military",
-      "urlToImage": "https://media.npr.org/assets/img/2024/01/25/20231121-_dsc9042-edit_wide-b58d7f3467c9171739e6db46d38132b780c3214f-s1400-c100.jpg",
-      "publishedAt": "2024-01-31T10:01:22Z",
-      "content": "Olha Bilianska's husband was mobilized two years ago. Even after being injured, he is being redeployed. \"Some people still believe that this war won't get them,\" Bilianska says. \"It will get them. Th… [+11512 chars]",
-      "isMarked": true,
-      "category": "intern",
-      "_id": 12
     }
   ]
 }
