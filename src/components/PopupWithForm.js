@@ -26,8 +26,6 @@ export default function ModalWithForm({ children, btnType, title, button, second
     }
   };
 
-  console.log(isValid);
-
   return (
     <div className="popup" onClick={handleOverlayClick}>
       <div className="popup__container popup__container_type_form">

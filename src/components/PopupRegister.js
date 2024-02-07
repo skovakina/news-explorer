@@ -8,7 +8,6 @@ export default function PopupRegister({ handleClosePopup, onSubmit, isOpen, open
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('submit');
     onSubmit({ email: formValidator.values['email'], password: formValidator.values['password'], name: formValidator.values['name'] });
   };
   const secondaryButton = (

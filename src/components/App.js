@@ -34,7 +34,6 @@ function App() {
   useEffect(() => {
     getItems()
       .then((items) => {
-        console.log(items);
         setSavedNews(items);
       })
       .catch((err) => {
@@ -59,7 +58,6 @@ function App() {
   };
 
   const handleSignUp = (data) => {
-    console.log('sign up', data);
     openPopupSuccess();
   };
 
@@ -68,7 +66,6 @@ function App() {
   };
 
   const handleSignIn = (data) => {
-    console.log('sign in', data);
     setCurrentUser(data);
     setLoggedIn(true);
     closePopup();

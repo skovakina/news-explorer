@@ -8,7 +8,6 @@ export default function PopupSignIn({ handleClosePopup, onSubmit, isOpen, openPo
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('submit');
     onSubmit({ email: formValidator.values['email'], password: formValidator.values['password'] });
   };
 
@@ -20,7 +19,7 @@ export default function PopupSignIn({ handleClosePopup, onSubmit, isOpen, openPo
       </button>
     </div>
   );
-  console.log(formValidator.isValid);
+
   return (
     <PopupWithForm
       btnType={'submit'}

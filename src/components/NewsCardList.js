@@ -4,7 +4,6 @@ import NewsCard from './NewsCard';
 import '../blocks/NewsCardList.css';
 
 export default function NewsCardList({ news, handleNewsMark, handleDeleteNews }) {
-  console.log(news);
   return (
     <ul className="news-card-list">
       {news.map((article) => {

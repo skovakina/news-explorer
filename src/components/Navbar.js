@@ -11,7 +11,6 @@ export default function Navbar({ openPopupRegister, handleLogout, activeModal })
 
   const toggleMenu = () => {
     setIsNavOpen(!isNavOpen);
-    console.log(isNavOpen);
   };
   const handleThemeChange = () => {
     if (location.pathname === '/') {
