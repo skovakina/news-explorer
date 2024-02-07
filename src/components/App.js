@@ -32,6 +32,10 @@ function App() {
   const [keyWord, setKeyWord] = useState('');
 
   useEffect(() => {
+    setLoggedIn(localStorage.getItem('isLoggedIn'));
+  }, []);
+
+  useEffect(() => {
     getItems()
       .then((items) => {
         setSavedNews(items);
@@ -62,12 +66,14 @@ function App() {
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
     setLoggedIn(false);
   };
 
   const handleSignIn = (data) => {
     setCurrentUser(data);
     setLoggedIn(true);
+    localStorage.setItem('isLoggedIn', isLoggedIn);
     closePopup();
   };
 
