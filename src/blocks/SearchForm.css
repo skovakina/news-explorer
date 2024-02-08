@@ -2,6 +2,7 @@
   margin-top: 88px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .search__box {
@@ -58,6 +59,13 @@
 
 .search__button:active {
   background: #2a65cc;
+}
+
+.search-input__error {
+  height: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  display: block;
 }
 
 @media screen and (max-width: 900px) {
