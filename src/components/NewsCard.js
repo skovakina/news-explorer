@@ -4,7 +4,7 @@ import defaultImage from '../images/news-image.jpg';
 import { useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-export default function NewsCard({ key, article, handleNewsMark, handleDeleteNews }) {
+export default function NewsCard({ article, handleNewsMark, handleDeleteNews }) {
   const { isLoggedIn } = useContext(CurrentUserContext);
   const [isHovering, setIsHovering] = useState(false);
 
@@ -52,7 +52,7 @@ export default function NewsCard({ key, article, handleNewsMark, handleDeleteNew
   };
 
   return (
-    <li key={key} className="news-card">
+    <li className="news-card">
       {renderHeader()}
       <img src={article.urlToImage || defaultImage} alt={article.title} className="news-card__image" />
       <div className="news-card__body">

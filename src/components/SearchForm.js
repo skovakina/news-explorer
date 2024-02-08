@@ -16,7 +16,7 @@ export default function SearchForm({ handleSearch }) {
     <div className="search__container">
       <form className="search__box" onSubmit={handleSubmit}>
         <input
-          novalidate
+          noValidate
           required
           name="search"
           type="text"
@@ -24,7 +24,6 @@ export default function SearchForm({ handleSearch }) {
           placeholder="Enter topic"
           value={formValidator.values['search'] || ''}
           onChange={formValidator.handleChange}
-          isValid={formValidator.isValid}
         />
 
         <button className="search__button" type="submit">

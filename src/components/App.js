@@ -33,6 +33,12 @@ function App() {
 
   useEffect(() => {
     setLoggedIn(localStorage.getItem('isLoggedIn'));
+
+    const storedArticles = localStorage.getItem('articles');
+    if (storedArticles) {
+      setNews(JSON.parse(storedArticles));
+      setStartSearch(true); //render articles
+    }
   }, []);
 
   useEffect(() => {
@@ -96,6 +102,7 @@ function App() {
       .then((res) => {
         setNews(res.articles);
         setKeyWord(keyword);
+        localStorage.setItem('articles', JSON.stringify(res.articles));
         setIsLoading(false);
       })
       .catch((error) => {
