@@ -1,4 +1,5 @@
 # News Explorer
+![image](https://github.com/skovakina/se_news-explore/assets/70713202/9f58c1b8-ccfa-45a4-afc5-aee443569212)
 
 ## About the Project
 
