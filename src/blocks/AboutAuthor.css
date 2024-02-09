@@ -1,11 +1,13 @@
 .about {
   padding: 80px 40px;
+  margin: auto;
   box-sizing: border-box;
   max-width: calc(1232px + 80px);
+  width: 100%;
   display: grid;
   grid-template-columns: min-content 1fr;
   gap: 30px;
-  margin: auto;
+
   /* font */
   color: #1a1b22;
   font-family: 'Roboto', sans-serif;
@@ -40,7 +42,7 @@
 
 @media screen and (max-width: 900px) {
   .about {
-    padding: 40px;
+    padding: 40px 40px 60px;
     gap: 32px;
   }
   .about__image {
@@ -66,6 +68,11 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+  }
+
+  .about__image {
+    width: 272px;
+    height: 272px;
   }
 
   .about__title {
