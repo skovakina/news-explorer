@@ -12,7 +12,7 @@ export default function Footer() {
         <p className="footer__credentials">© 2023 Supersite, Powered by News API</p>
 
         <div className="footer__links">
-          <NavLink to="" className="footer__link">
+          <NavLink to="/" className="footer__link">
             Home
           </NavLink>
           <a href="https://tripleten.com/" className="footer__link">

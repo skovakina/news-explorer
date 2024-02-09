@@ -1,11 +1,11 @@
-.search__container {
+.search {
   margin-top: 88px;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
-.search__box {
+.search__form {
   position: relative;
   width: 100%;
   display: flex;
@@ -61,7 +61,7 @@
   background: #2a65cc;
 }
 
-.search-input__error {
+.search__input-error {
   height: 20px;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
@@ -90,7 +90,7 @@
     margin-top: 0;
   }
 
-  .search__box {
+  .search__form {
     flex-direction: column;
     gap: 16px;
     margin-top: 120px;
