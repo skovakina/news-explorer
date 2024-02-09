@@ -8,3 +8,9 @@
     padding: 32px 40px;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .saved-news-list {
+    padding: 24px 16px;
+  }
+}

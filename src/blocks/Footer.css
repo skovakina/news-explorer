@@ -49,7 +49,7 @@
 }
 
 @media screen and (max-width: 900px) {
-  .footer {
+  .footer__container {
     height: 64px;
   }
 }

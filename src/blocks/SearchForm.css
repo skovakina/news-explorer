@@ -81,10 +81,15 @@
 
   .search__button {
     height: 56px;
+    width: 160px;
   }
 }
 
 @media screen and (max-width: 400px) {
+  .search__container {
+    margin-top: 0;
+  }
+
   .search__box {
     flex-direction: column;
     gap: 16px;

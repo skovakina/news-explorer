@@ -52,8 +52,8 @@ export default function Navbar({ openPopupRegister, handleLogout, activeModal })
             <NavLink to="/saved-news" className="nav__link" activeClassName="nav__link_active">
               <p className="nav__link-text">Saved articles</p>
             </NavLink>
-            <button onClick={handleLogout} type="button" className="nav__button">
-              Logout
+            <button onClick={handleLogout} type="button" className="nav__button nav__button_logout">
+              Elise <div className="nav__logout-image"></div>
             </button>
           </div>
         )}

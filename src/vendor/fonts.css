@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   src: local('Inter Regular'), local('Inter-400'), url('./fonts/inter-400-regular.woff') format('woff'),
@@ -7,14 +7,14 @@
 }
 
 @font-face {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   src: local('Inter Medium'), local('Inter-500'), url('./fonts/inter-500.woff') format('woff'), url('./fonts/inter-500.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   src: local('Roboto Regular'), local('Roboto-400'), url('./fonts/roboto-400-regular.woff') format('woff'),
@@ -22,28 +22,28 @@
 }
 
 @font-face {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   src: local('Roboto Medium'), local('Roboto-500'), url('./fonts/roboto-500.woff') format('woff'), url('./fonts/roboto-500.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
   src: local('Roboto Bold'), local('Roboto-700'), url('./fonts/roboto-700.woff') format('woff'), url('./fonts/roboto-700.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
   src: local('Roboto Black'), local('Roboto-900'), url('./fonts/roboto-900.woff') format('woff'), url('./fonts/roboto-900.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: 400;
   src: local('Roboto Slab Regular'), local('RobotoSlab-400'), url('./fonts/roboto-slab-400-regular.woff') format('woff'),
@@ -51,7 +51,7 @@
 }
 
 @font-face {
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: 'Roboto Slab';
   font-style: normal;
   font-weight: 700;
   src: local('Roboto Slab Bold'), local('RobotoSlab-700'), url('./fonts/roboto-slab-700.woff') format('woff'),

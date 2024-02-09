@@ -62,7 +62,6 @@
 .nav__button,
 .nav__link {
   height: 80px;
-  padding: 0 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,11 +74,35 @@
   line-height: 24px; /* 133.333% */
 }
 
+.nav__link {
+  padding: 0 9px;
+}
+
 .nav__button {
-  width: 176px;
+  box-sizing: border-box;
+  padding: 0 56px;
   height: 48px;
   border-radius: 100px;
   background-color: transparent;
+}
+
+.nav__button_logout {
+  padding: 0 12px 0 19px;
+}
+
+.nav__logout-image {
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  margin-left: 15px;
+}
+
+.nav_theme_light .nav__logout-image {
+  background-image: url(../images/logout-icon-white.svg);
+}
+
+.nav_theme_dark .nav__logout-image {
+  background-image: url(../images/logout-icon-black.svg);
 }
 
 .nav__menu-button {
@@ -91,20 +114,39 @@
 }
 
 @media screen and (max-width: 900px) {
+  .nav {
+    height: 66px;
+  }
   .nav__button {
     height: 40px;
-    width: 152px;
+    padding: 0 44px;
   }
   .nav__link {
+    padding: 0 6px;
     height: 66px;
   }
 
   .nav__links {
-    gap: 20px;
+    gap: 19px;
+  }
+
+  .nav__button_logout {
+    padding: 0 12px 0 19px;
+  }
+
+  .nav__logout-image {
+    margin-left: 12px;
   }
 }
 
 @media screen and (max-width: 600px) {
+  .nav {
+    height: 56px;
+  }
+  .nav__logo {
+    font-size: 16px;
+    line-height: 24px;
+  }
   .nav_opened .nav {
     background-color: #1a1b22;
     color: var(--main-white);
@@ -160,7 +202,6 @@
 
   .nav__menu-button {
     background-image: url(../images/menu-icon.svg);
-    /* mask-image: url(../images/menu-icon.svg); */
     background-position: center;
     height: 24px;
     width: 24px;
