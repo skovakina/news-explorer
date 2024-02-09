@@ -6,7 +6,6 @@ export default function SavedNewsHeader({ savedNewsCategories }) {
   const categoriesString = categoriesSorted.slice(0, 2).join(', ');
 
   const headerText = () => {
-    console.log(savedNewsCategories);
     if (savedNewsCategories.length === 0) {
       return `Elise, you don't have saved articles`;
     }

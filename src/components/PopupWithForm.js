@@ -37,7 +37,7 @@ export default function ModalWithForm({ children, btnType, title, button, second
         <form onSubmit={onSubmit} className="popup__form" name="newClothesForm">
           {children}
           <div className="popup__buttons">
-            <button disabled={!isValid} type={btnType} className="popup__btn-submit" onClick={onClick}>
+            <button disabled={!isValid && btnType === 'submit' ? true : false} type={btnType} className="popup__btn-submit" onClick={onClick}>
               {button}
             </button>
             {secondaryButton && secondaryButton}
