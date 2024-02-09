@@ -104,6 +104,9 @@
 .nav_theme_dark .nav__logout-image {
   background-image: url(../images/logout-icon-black.svg);
 }
+.nav_opened .nav__logout-image {
+  background-image: url(../images/logout-icon-white.svg);
+}
 
 .nav__menu-button {
   cursor: pointer;

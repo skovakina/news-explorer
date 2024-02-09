@@ -6,6 +6,7 @@ export default function SavedNewsHeader({ savedNewsCategories }) {
   const categoriesString = categoriesSorted.slice(0, 2).join(', ');
 
   const headerText = () => {
+    console.log(savedNewsCategories);
     if (savedNewsCategories.length === 0) {
       return `Elise, you don't have saved articles`;
     }
@@ -17,7 +18,9 @@ export default function SavedNewsHeader({ savedNewsCategories }) {
 
   const categoriesText = () => {
     if (categoriesSorted.length === 0) {
-      return;
+      <p className="saved-news-header__text">
+        By keywords: <span className="saved-news-header__categories"></span>
+      </p>;
     }
     if (categoriesSorted.length <= 2) {
       return (

@@ -19,11 +19,11 @@ export default function Footer() {
             TripleTen
           </a>
           <div className="footer__links-social">
-            <a href="https://github.com/skovakina" className="footer__link">
-              <img src={facebook} alt="Facebook" className="footer__links-social-image" />
-            </a>
             <a href="https://www.facebook.com/svetlana.kovakina" className="footer__link">
               <img src={github} alt="Github" className="footer__links-social-image" />
+            </a>
+            <a href="https://github.com/skovakina" className="footer__link">
+              <img src={facebook} alt="Facebook" className="footer__links-social-image" />
             </a>
           </div>
         </div>

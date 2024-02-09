@@ -5,8 +5,9 @@ export default function AboutAuthor() {
   return (
     <section className="about">
       <img alt="About Me" className="about__image"></img>
+
       <div className="about__content">
-        <h2 className="about__title">About the Author</h2>
+        <h2 className="about__title">About the author</h2>
         <p className="about__desription">
           Hello! My name is Svetlana. I'm a self-driven software engineer based in San Francisco, with a keen focus on creative problem-solving.
         </p>
