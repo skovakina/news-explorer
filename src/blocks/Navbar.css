@@ -1,0 +1,230 @@
+.nav {
+  height: 80px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  box-shadow: 0px -1px 0px 0px #d1d2d6 inset;
+}
+
+.nav__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  max-width: 1232px;
+  padding: 0 40px;
+}
+
+.nav_theme_dark {
+  color: var(--color-dark);
+}
+
+.nav_theme_light {
+  color: var(--main-white);
+}
+
+.nav_theme_dark .nav__button,
+.nav_theme_light .nav__button {
+  color: currentColor;
+  border: 1px solid currentColor;
+}
+
+.nav_theme_dark .nav__link,
+.nav_theme_light .nav__link,
+.nav_theme_dark .nav__link:active,
+.nav_theme_light .nav__link:active,
+.nav_theme_dark .nav__link:visited,
+.nav_theme_light .nav__link:visited {
+  color: currentColor;
+}
+
+.nav_theme_dark .nav__link_active,
+.nav_theme_light .nav__link_active {
+  box-shadow: 0px -3px 0px 0px currentColor inset;
+}
+
+.nav__logo {
+  width: 200px;
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.nav__links {
+  display: flex;
+  height: 100%;
+  gap: 34px;
+  align-items: center;
+}
+
+.nav__button,
+.nav__link {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px; /* 133.333% */
+}
+
+.nav__link {
+  padding: 0 9px;
+}
+
+.nav__button {
+  box-sizing: border-box;
+  padding: 0 56px;
+  height: 48px;
+  border-radius: 100px;
+  background-color: transparent;
+}
+
+.nav__button_logout {
+  padding: 0 12px 0 19px;
+}
+
+.nav__logout-image {
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  margin-left: 15px;
+}
+
+.nav_theme_light .nav__logout-image {
+  background-image: url(../images/logout-icon-white.svg);
+}
+
+.nav_theme_dark .nav__logout-image {
+  background-image: url(../images/logout-icon-black.svg);
+}
+.nav_opened .nav__logout-image {
+  background-image: url(../images/logout-icon-white.svg);
+}
+
+.nav__menu-button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .nav {
+    height: 66px;
+  }
+  .nav__button {
+    height: 40px;
+    padding: 0 44px;
+  }
+  .nav__link {
+    padding: 0 6px;
+    height: 66px;
+  }
+
+  .nav__links {
+    gap: 19px;
+  }
+
+  .nav__button_logout {
+    padding: 0 12px 0 19px;
+  }
+
+  .nav__logout-image {
+    margin-left: 12px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .nav {
+    height: 56px;
+  }
+  .nav__logo {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .nav_opened .nav {
+    background-color: #1a1b22;
+    color: var(--main-white);
+  }
+
+  .nav_opened .nav__logo {
+    color: var(--main-white);
+  }
+
+  .nav_hidden {
+    display: none;
+  }
+  .nav__container {
+    flex-direction: column;
+    padding: 0;
+  }
+  .nav__logo {
+    z-index: 100;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+  }
+
+  .nav_opened .nav__links {
+    display: flex;
+    visibility: visible;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    background-color: #1a1b22;
+    color: var(--main-white);
+    width: 100vw;
+    padding: 72px 16px 24px;
+    transition: visibility linear 1s;
+  }
+
+  .nav__link-text {
+    margin-right: auto;
+  }
+
+  .nav__links {
+    visibility: hidden;
+    display: none;
+  }
+
+  .nav__link,
+  .nav__button {
+    width: 100%;
+    height: 56px;
+    padding: 0;
+  }
+
+  .nav__menu-button {
+    background-image: url(../images/menu-icon.svg);
+    background-position: center;
+    height: 24px;
+    width: 24px;
+    display: block;
+    z-index: 10;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+
+  .nav_theme_dark .nav__menu-button {
+    background-image: url(../images/menu-icon-dark.svg);
+  }
+
+  .nav_theme_dark .nav__menu-button_close,
+  .nav_theme_light .nav__menu-button_close {
+    background-image: url(../images/close-icon.svg);
+  }
+  .nav_theme_dark .nav__link_active,
+  .nav_theme_light .nav__link_active {
+    box-shadow: none;
+  }
+}

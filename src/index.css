@@ -1,11 +1,22 @@
 @import url(./vendor/fonts.css);
 
-body {
+:root {
+  --color-dark: #1a1b22;
+  --main-white: #fff;
+}
+
+* {
   margin: 0;
-  background: #f3f3f3;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
   /* fonts */
-  font-family: 'Cabinet Grotesk Regular', sans-serif;
-  font-weight: normal;
+  color: #1a1b22;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  line-height: 20px; /* 125% */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
 }
