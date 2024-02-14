@@ -6,6 +6,8 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
+export { baseUrl, headers };
+
 export function getItems() {
   return fetch(`${baseUrl}/articles`, {
     method: 'GET',

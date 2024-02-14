@@ -3,6 +3,7 @@ import { React, useState, useEffect } from 'react';
 //  variables
 import { getNews } from '../utils/NewsApi';
 import { getItems, postItem, deleteItem } from '../utils/serverApi';
+import { signup, signin, checkToken } from '../utils/auth';
 //  components
 
 import Header from './Header';
@@ -30,6 +31,8 @@ function App() {
   const [startSearch, setStartSearch] = useState(false);
   const [savedNews, setSavedNews] = useState([]);
   const [keyWord, setKeyWord] = useState('');
+
+  const getToken = () => localStorage.getItem('jwt');
 
   useEffect(() => {
     setLoggedIn(localStorage.getItem('isLoggedIn'));
@@ -68,19 +71,36 @@ function App() {
   };
 
   const handleSignUp = (data) => {
-    openPopupSuccess();
+    signup(data)
+      .then((user) => {
+        openPopupSuccess();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
     setLoggedIn(false);
+    setCurrentUser({});
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('isLoggedIn');
   };
 
   const handleSignIn = (data) => {
-    setCurrentUser(data);
-    setLoggedIn(true);
-    localStorage.setItem('isLoggedIn', isLoggedIn);
-    closePopup();
+    signin(data)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem('jwt', res.token);
+          localStorage.setItem('isLoggedIn', true);
+        }
+        setCurrentUser(res.user);
+        setLoggedIn(true);
+        closePopup();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleNewsMark = (article) => {

@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../blocks/SavedNewsHeader.css';
 
+// context
+
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+
 export default function SavedNewsHeader({ savedNewsCategories }) {
+  const { currentUser } = useContext(CurrentUserContext);
+
   const categoriesSorted = Array.from(new Set(savedNewsCategories));
   const categoriesString = categoriesSorted.slice(0, 2).join(', ');
 
   const headerText = () => {
+    console.log(currentUser);
     if (savedNewsCategories.length === 0) {
-      return `Elise, you don't have saved articles`;
+      return `${currentUser.name}, you don't have saved articles`;
     }
     if (savedNewsCategories.length === 1) {
-      return `Elise, you have 1 saved article`;
+      return `${currentUser.name}, you have 1 saved article`;
     }
-    return `Elise, you have ${savedNewsCategories.length} saved articles`;
+    return `${currentUser.name}, you have ${savedNewsCategories.length} saved articles`;
   };
 
   const categoriesText = () => {
