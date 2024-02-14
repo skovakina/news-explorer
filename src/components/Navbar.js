@@ -5,7 +5,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { NavLink, useLocation } from 'react-router-dom';
 
 export default function Navbar({ openPopupRegister, handleLogout, activeModal }) {
-  const { isLoggedIn } = useContext(CurrentUserContext);
+  const { isLoggedIn, currentUser } = useContext(CurrentUserContext);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const location = useLocation();
 
@@ -53,7 +53,7 @@ export default function Navbar({ openPopupRegister, handleLogout, activeModal })
               <p className="nav__link-text">Saved articles</p>
             </NavLink>
             <button onClick={handleLogout} type="button" className="nav__button nav__button_logout">
-              Elise <div className="nav__logout-image"></div>
+              {currentUser.name} <div className="nav__logout-image"></div>
             </button>
           </div>
         )}
