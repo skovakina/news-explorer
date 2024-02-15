@@ -8,24 +8,34 @@ const headers = {
 
 export { baseUrl, headers };
 
-export function getItems() {
+export function getItems(token) {
   return fetch(`${baseUrl}/articles`, {
     method: 'GET',
-    headers: headers,
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
   }).then((res) => checkResponse(res));
 }
 
-export function postItem(data) {
+export function postItem(article, token) {
+  console.log(article);
   return fetch(`${baseUrl}/articles`, {
     method: 'POST',
-    headers: headers,
-    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(article),
   }).then((res) => checkResponse(res));
 }
 
-export function deleteItem(itemId) {
+export function deleteItem(itemId, token) {
   return fetch(`${baseUrl}/articles/${itemId}`, {
     method: 'DELETE',
-    headers: headers,
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
   }).then((res) => checkResponse(res));
 }

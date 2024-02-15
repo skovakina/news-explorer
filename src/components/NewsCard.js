@@ -58,7 +58,7 @@ export default function NewsCard({ article, handleNewsMark, handleDeleteNews }) 
       <div className="news-card__body">
         <div className="news-card__date">{formatDate(article.publishedAt)}</div>
         <h3 className="news-card__title">{article.title}</h3>
-        <p className="news-card__text">{article.content.replace(/\[.*?\]/g, '')}</p>
+        <p className="news-card__text">{article.content}</p>
         <p className="news-card__publisher">{article.source.name}</p>
       </div>
     </li>

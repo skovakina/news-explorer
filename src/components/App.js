@@ -37,15 +37,21 @@ function App() {
   useEffect(() => {
     setLoggedIn(localStorage.getItem('isLoggedIn'));
 
-    const storedArticles = localStorage.getItem('articles');
-    if (storedArticles) {
-      setNews(JSON.parse(storedArticles));
+    if (localStorage.getItem('keyword')) {
+      setKeyWord(localStorage.getItem('keyword'));
+    }
+    if (localStorage.getItem('user')) {
+      setCurrentUser(JSON.parse(localStorage.getItem('user')));
+    }
+
+    if (localStorage.getItem('articles')) {
+      setNews(JSON.parse(localStorage.getItem('articles')));
       setStartSearch(true); //render articles
     }
   }, []);
 
   useEffect(() => {
-    getItems()
+    getItems(getToken())
       .then((items) => {
         setSavedNews(items);
       })
@@ -85,6 +91,7 @@ function App() {
     setCurrentUser({});
     localStorage.removeItem('jwt');
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('user');
   };
 
   const handleSignIn = (data) => {
@@ -93,6 +100,8 @@ function App() {
         if (res.token) {
           localStorage.setItem('jwt', res.token);
           localStorage.setItem('isLoggedIn', true);
+          localStorage.setItem('user', JSON.stringify(res.user));
+          console.log(res);
         }
         setCurrentUser(res.user);
         setLoggedIn(true);
@@ -104,9 +113,18 @@ function App() {
   };
 
   const handleNewsMark = (article) => {
-    article.isMarked = true;
-    article.category = keyWord;
-    postItem(article)
+    const data = {
+      keyword: keyWord,
+      title: article.title,
+      content: article.content,
+      publishedAt: article.publishedAt,
+      source: article.source.name,
+      url: article.url,
+      urlToImage: article.urlToImage,
+    };
+    console.log(data);
+    console.log(article);
+    postItem(data, getToken())
       .then((res) => {
         setSavedNews([res, ...savedNews]);
       })
@@ -122,6 +140,7 @@ function App() {
       .then((res) => {
         setNews(res.articles);
         setKeyWord(keyword);
+        localStorage.setItem('keyword', keyword);
         localStorage.setItem('articles', JSON.stringify(res.articles));
         setIsLoading(false);
       })
@@ -132,7 +151,7 @@ function App() {
   };
 
   const handleDeleteNews = (article) => {
-    deleteItem(article._id)
+    deleteItem(article._id, getToken())
       .then(() => {
         const updatedList = savedNews.filter((item) => item._id !== article._id);
         setSavedNews(updatedList);

@@ -1,9 +1,11 @@
-import { React } from 'react';
+import React, { useContext } from 'react';
 import { useFormValidation } from './UseFormValidation';
 import '../blocks/SearchForm.css';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 export default function SearchForm({ handleSearch }) {
   const formValidator = useFormValidation();
+  const { keyword } = useContext(CurrentUserContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
