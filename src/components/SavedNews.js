@@ -4,7 +4,7 @@ import NewsCardList from './NewsCardList.js';
 import SavedNewsHeader from './SavedNewsHeader';
 
 export default function SavedNews({ news, handleNewsMark, handleDeleteNews }) {
-  const savedNewsCategories = news.map((article) => article.category);
+  const savedNewsCategories = news.map((article) => article.keyword);
 
   return (
     <div className="saved-news">

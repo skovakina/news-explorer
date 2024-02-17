@@ -1,9 +1,9 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { React, useState, useEffect } from 'react';
 //  variables
 import { getNews } from '../utils/NewsApi';
 import { getItems, postItem, deleteItem } from '../utils/serverApi';
-import { signup, signin, checkToken } from '../utils/auth';
+import { signup, signin } from '../utils/auth';
 //  components
 
 import Header from './Header';
@@ -46,19 +46,21 @@ function App() {
 
     if (localStorage.getItem('articles')) {
       setNews(JSON.parse(localStorage.getItem('articles')));
-      setStartSearch(true); //render articles
+      setStartSearch(true);
     }
   }, []);
 
   useEffect(() => {
-    getItems(getToken())
-      .then((items) => {
-        setSavedNews(items);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+    if (isLoggedIn) {
+      getItems(getToken())
+        .then((items) => {
+          setSavedNews(items);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [isLoggedIn]);
 
   const closePopup = () => {
     setActiveModal('');
@@ -101,7 +103,6 @@ function App() {
           localStorage.setItem('jwt', res.token);
           localStorage.setItem('isLoggedIn', true);
           localStorage.setItem('user', JSON.stringify(res.user));
-          console.log(res);
         }
         setCurrentUser(res.user);
         setLoggedIn(true);
@@ -116,14 +117,13 @@ function App() {
     const data = {
       keyword: keyWord,
       title: article.title,
-      content: article.content,
+      description: article.description,
       publishedAt: article.publishedAt,
       source: article.source.name,
       url: article.url,
       urlToImage: article.urlToImage,
     };
-    console.log(data);
-    console.log(article);
+
     postItem(data, getToken())
       .then((res) => {
         setSavedNews([res, ...savedNews]);
@@ -169,22 +169,24 @@ function App() {
           isLoggedIn,
         }}
       >
-        <BrowserRouter>
-          <Navbar openPopupRegister={openPopupRegister} handleLogout={handleLogout} activeModal={activeModal} />
+        {/* <BrowserRouter> */}
+        <Navbar openPopupRegister={openPopupRegister} handleLogout={handleLogout} activeModal={activeModal} />
 
-          <Switch>
-            <ProtectedRoute isLoggedIn={isLoggedIn} path="/saved-news">
-              <SavedNews handleNewsMark={handleNewsMark} news={savedNews} handleDeleteNews={handleDeleteNews} />
-            </ProtectedRoute>
-            <Route exact path="/">
-              <Header handleSearch={handleSearch} />
+        <Switch>
+          <ProtectedRoute path="/saved-news">
+            <SavedNews handleNewsMark={handleNewsMark} news={savedNews} handleDeleteNews={handleDeleteNews} />
+          </ProtectedRoute>
+          <Route exact path="/">
+            <Header handleSearch={handleSearch} />
 
-              {startSearch && <SearchResults handleNewsMark={handleNewsMark} news={news} isLoading={isLoading} />}
-              <AboutAuthor />
-            </Route>
-          </Switch>
-          <Footer />
-        </BrowserRouter>
+            {startSearch && <SearchResults handleNewsMark={handleNewsMark} news={news} isLoading={isLoading} />}
+            <AboutAuthor />
+          </Route>
+
+          <Route render={() => <Redirect to="/" />} />
+        </Switch>
+        <Footer />
+        {/* </BrowserRouter> */}
         {activeModal === 'success' && (
           <PopupSuccess handleClosePopup={closePopup} isOpen={activeModal === 'success'} openPopupSignIn={openPopupSignIn} />
         )}
