@@ -48,7 +48,7 @@ export default function NewsCard({ article, handleNewsMark, handleDeleteNews }) 
             className={isMarkedClassName}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            onClick={() => isLoggedIn && handleSave()}
+            onClick={() => isLoggedIn && !article.saved && handleSave()}
           ></div>
         </div>
       </div>

@@ -19,7 +19,6 @@ export function getItems(token) {
 }
 
 export function postItem(article, token) {
-  console.log(article);
   return fetch(`${baseUrl}/articles`, {
     method: 'POST',
     headers: {
