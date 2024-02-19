@@ -44,11 +44,12 @@ function App() {
       setCurrentUser(JSON.parse(localStorage.getItem('user')));
     }
 
-    if (localStorage.getItem('articles')) {
+    if (localStorage.getItem('articles') && !startSearch) {
+      console.log(startSearch);
       setNews(JSON.parse(localStorage.getItem('articles')));
       setStartSearch(true);
     }
-  }, []);
+  }, [startSearch]);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -113,20 +114,20 @@ function App() {
       });
   };
 
-  const handleNewsMark = (article) => {
+  const handleSaveNews = (article, callback) => {
     const data = {
       keyword: keyWord,
       title: article.title,
       description: article.description,
       publishedAt: article.publishedAt,
-      source: article.source.name,
+      source: article.source,
       url: article.url,
       urlToImage: article.urlToImage,
     };
-
     postItem(data, getToken())
       .then((res) => {
         setSavedNews([res, ...savedNews]);
+        if (callback) callback(res);
       })
       .catch((error) => {
         console.error(error);
@@ -138,10 +139,23 @@ function App() {
     setIsLoading(true);
     getNews(keyword)
       .then((res) => {
-        setNews(res.articles);
+        console.log(res);
+        const updatedArticles = res.articles.map((article) => ({
+          keyword: keyword,
+          title: article.title,
+          description: article.description,
+          publishedAt: article.publishedAt,
+          source: article.source.name,
+          url: article.url,
+          urlToImage: article.urlToImage,
+          _id: null,
+        }));
+        setNews(updatedArticles);
         setKeyWord(keyword);
+
+        // Update localStorage with the new schema
         localStorage.setItem('keyword', keyword);
-        localStorage.setItem('articles', JSON.stringify(res.articles));
+        localStorage.setItem('articles', JSON.stringify(updatedArticles));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -169,24 +183,31 @@ function App() {
           isLoggedIn,
         }}
       >
-        {/* <BrowserRouter> */}
         <Navbar openPopupRegister={openPopupRegister} handleLogout={handleLogout} activeModal={activeModal} />
 
         <Switch>
           <ProtectedRoute path="/saved-news">
-            <SavedNews handleNewsMark={handleNewsMark} news={savedNews} handleDeleteNews={handleDeleteNews} />
+            <SavedNews news={savedNews} handleSaveNews={handleSaveNews} handleDeleteNews={handleDeleteNews} openPopupRegister={openPopupRegister} />
           </ProtectedRoute>
           <Route exact path="/">
             <Header handleSearch={handleSearch} />
 
-            {startSearch && <SearchResults handleNewsMark={handleNewsMark} news={news} isLoading={isLoading} />}
+            {startSearch && (
+              <SearchResults
+                news={news}
+                isLoading={isLoading}
+                handleSaveNews={handleSaveNews}
+                handleDeleteNews={handleDeleteNews}
+                openPopupRegister={openPopupRegister}
+              />
+            )}
             <AboutAuthor />
           </Route>
 
           <Route render={() => <Redirect to="/" />} />
         </Switch>
         <Footer />
-        {/* </BrowserRouter> */}
+
         {activeModal === 'success' && (
           <PopupSuccess handleClosePopup={closePopup} isOpen={activeModal === 'success'} openPopupSignIn={openPopupSignIn} />
         )}

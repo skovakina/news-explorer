@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFormValidation } from './UseFormValidation';
+import { useFormValidation } from '../hooks/UseFormValidation';
 import '../blocks/SearchForm.css';
 
 export default function SearchForm({ handleSearch }) {

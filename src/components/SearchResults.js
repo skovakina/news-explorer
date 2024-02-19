@@ -4,7 +4,7 @@ import NewsCardList from './NewsCardList';
 import NotFound from './NotFound';
 import Preloader from './Preloader';
 
-export default function SearchResults({ news, handleNewsMark, isLoading }) {
+export default function SearchResults({ news, isLoading, ...props }) {
   const [displayedNewsCount, setDisplayedNewsCount] = useState(3);
 
   const showMore = () => {
@@ -18,7 +18,7 @@ export default function SearchResults({ news, handleNewsMark, isLoading }) {
         <div className="search-results__container">
           <h2 className="search-results__title">Search results</h2>
 
-          {news.length === 0 ? <NotFound /> : <NewsCardList handleNewsMark={handleNewsMark} news={news.slice(0, displayedNewsCount)} />}
+          {news.length === 0 ? <NotFound /> : <NewsCardList news={news.slice(0, displayedNewsCount)} props={props} />}
 
           {news.length > displayedNewsCount && (
             <button type="button" className="search-results__button" onClick={showMore}>
