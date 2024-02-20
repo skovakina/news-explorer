@@ -5,8 +5,6 @@
 
 A service where users can search for news articles and save them to their profiles.
 
-[Live - News Explorer App](https://sko-news.mooo.com/)
-
 ### Key Features
 
 - When the user enters a keyword in the search bar, the website sends a request to the News API service, finds all the relevant articles over the last week, and displays a list of cards for each of them.
@@ -21,6 +19,6 @@ A service where users can search for news articles and save them to their profil
 ### Design and Prototype
 
 Check out the Figma prototype for a visual idea of the app's design and layout:
-[Figma Prototype - News Explorer App](https://www.figma.com/file/z1bxDn7eBEDlsDhnZ9dtin/Your-Final-Project?node-id=0%3A1)
+[Figma Prototype - News Explorer App]([https://www.figma.com/file/dQLJwEKasIdspciJAJrCaf/Sprint-11_-WTWR?node-id=311%3A1291&mode=dev](https://www.figma.com/file/z1bxDn7eBEDlsDhnZ9dtin/Your-Final-Project?node-id=0%3A1))
 
 
