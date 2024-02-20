@@ -1,29 +1,40 @@
 import checkResponse from './utils';
 
-const baseUrl = 'http://localhost:3001';
+const baseUrl = process.env.NODE_ENV === 'production' ? 'https://api.sko-news.mooo.com' : 'http://localhost:3001';
 
 const headers = {
   'Content-Type': 'application/json',
 };
 
-export function getItems() {
+export { baseUrl, headers };
+
+export function getItems(token) {
   return fetch(`${baseUrl}/articles`, {
     method: 'GET',
-    headers: headers,
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
   }).then((res) => checkResponse(res));
 }
 
-export function postItem(data) {
+export function postItem(article, token) {
   return fetch(`${baseUrl}/articles`, {
     method: 'POST',
-    headers: headers,
-    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(article),
   }).then((res) => checkResponse(res));
 }
 
-export function deleteItem(itemId) {
+export function deleteItem(itemId, token) {
   return fetch(`${baseUrl}/articles/${itemId}`, {
     method: 'DELETE',
-    headers: headers,
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
   }).then((res) => checkResponse(res));
 }

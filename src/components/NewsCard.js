@@ -1,30 +1,63 @@
-import { React, useContext, useState } from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import '../blocks/NewsCard.css';
 import defaultImage from '../images/news-image.jpg';
 import { useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-export default function NewsCard({ article, handleNewsMark, handleDeleteNews }) {
+export default function NewsCard({ article, props }) {
   const { isLoggedIn } = useContext(CurrentUserContext);
   const [isHovering, setIsHovering] = useState(false);
+  const [card, setCard] = useState({});
 
   const isMarkedClassName = `news-card__icon-image ${
-    article.isMarked ? 'news-card__icon-image_type_bookmark-marked' : 'news-card__icon-image_type_bookmark'
+    card._id ? 'news-card__icon-image_type_bookmark-marked' : 'news-card__icon-image_type_bookmark'
   }`;
-
   const location = useLocation();
+
+  useEffect(() => {
+    setCard({
+      keyword: article.keyword ? article.keyword : null,
+      title: article.title,
+      description: article.description,
+      publishedAt: article.publishedAt,
+      source: article.source,
+      url: article.url,
+      urlToImage: article.urlToImage,
+      _id: article._id ? article._id : null,
+    });
+  }, [article.keyword, article.title, article.description, article.publishedAt, article.source, article.url, article.urlToImage, article._id]);
+
+  const handleSave = () => {
+    props.handleSaveNews(card, (res) => {
+      setCard(res);
+    });
+  };
+
+  const handleDelete = () => {
+    props.handleDeleteNews(card);
+  };
+
+  const handleCLick = () => {
+    if (card._id) {
+      handleDelete();
+      card._id = null;
+    } else {
+      handleSave();
+    }
+  };
+
   const renderHeader = () => {
     if (location.pathname === '/saved-news') {
       return (
         <div className=" news-card__header   news-card__header_saved">
-          <div className="news-card__category">{article.category}</div>
+          <div className="news-card__category">{article.keyword}</div>
           {isHovering && <div className="news-card__popup">Remove from saved</div>}
           <div className="news-card__icon">
             <div
               className="news-card__icon-image news-card__icon-image_type_delete"
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
-              onClick={() => handleDeleteNews(article)}
+              onClick={() => handleDelete()}
             ></div>
           </div>
         </div>
@@ -38,7 +71,7 @@ export default function NewsCard({ article, handleNewsMark, handleDeleteNews }) 
             className={isMarkedClassName}
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
-            onClick={() => isLoggedIn && handleNewsMark(article)}
+            onClick={() => (isLoggedIn ? handleCLick() : props.openPopupRegister())}
           ></div>
         </div>
       </div>
@@ -54,12 +87,12 @@ export default function NewsCard({ article, handleNewsMark, handleDeleteNews }) 
   return (
     <li className="news-card">
       {renderHeader()}
-      <img src={article.urlToImage || defaultImage} alt={article.title} className="news-card__image" />
+      <img src={card.urlToImage || defaultImage} alt={card.title} className="news-card__image" />
       <div className="news-card__body">
-        <div className="news-card__date">{formatDate(article.publishedAt)}</div>
-        <h3 className="news-card__title">{article.title}</h3>
-        <p className="news-card__text">{article.content.replace(/\[.*?\]/g, '')}</p>
-        <p className="news-card__publisher">{article.source.name}</p>
+        <div className="news-card__date">{formatDate(card.publishedAt)}</div>
+        <h3 className="news-card__title">{card.title}</h3>
+        <p className="news-card__text">{card.description}</p>
+        <p className="news-card__publisher">{card.source}</p>
       </div>
     </li>
   );

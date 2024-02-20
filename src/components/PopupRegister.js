@@ -1,9 +1,9 @@
 import { React } from 'react';
 import PopupWithForm from './PopupWithForm';
 import Input from './Input';
-import { useFormValidation } from './UseFormValidation';
+import { useFormValidation } from '../hooks/UseFormValidation';
 
-export default function PopupRegister({ handleClosePopup, onSubmit, isOpen, openPopupSignIn, isValid }) {
+export default function PopupRegister({ handleClosePopup, onSubmit, openPopupSignIn }) {
   const formValidator = useFormValidation();
 
   const handleSubmit = (event) => {

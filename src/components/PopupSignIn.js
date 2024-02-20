@@ -1,6 +1,6 @@
 import { React } from 'react';
 import PopupWithForm from './PopupWithForm';
-import { useFormValidation } from './UseFormValidation';
+import { useFormValidation } from '../hooks/UseFormValidation';
 import Input from './Input';
 
 export default function PopupSignIn({ handleClosePopup, onSubmit, isOpen, openPopupRegister }) {

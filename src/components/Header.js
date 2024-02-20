@@ -2,7 +2,7 @@ import React from 'react';
 import '../blocks/Header.css';
 import SearchForm from './SearchForm';
 
-export default function Header({ openPopupRegister, handleSearch }) {
+export default function Header({ handleSearch }) {
   return (
     <header className="header">
       <div className="header__box">

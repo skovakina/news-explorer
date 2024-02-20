@@ -1,8 +1,9 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { React, useState, useEffect } from 'react';
 //  variables
 import { getNews } from '../utils/NewsApi';
 import { getItems, postItem, deleteItem } from '../utils/serverApi';
+import { signup, signin } from '../utils/auth';
 //  components
 
 import Header from './Header';
@@ -31,25 +32,36 @@ function App() {
   const [savedNews, setSavedNews] = useState([]);
   const [keyWord, setKeyWord] = useState('');
 
+  const getToken = () => localStorage.getItem('jwt');
+
   useEffect(() => {
     setLoggedIn(localStorage.getItem('isLoggedIn'));
 
-    const storedArticles = localStorage.getItem('articles');
-    if (storedArticles) {
-      setNews(JSON.parse(storedArticles));
-      setStartSearch(true); //render articles
+    if (localStorage.getItem('keyword')) {
+      setKeyWord(localStorage.getItem('keyword'));
     }
-  }, []);
+    if (localStorage.getItem('user')) {
+      setCurrentUser(JSON.parse(localStorage.getItem('user')));
+    }
+
+    if (localStorage.getItem('articles') && !startSearch) {
+      console.log(startSearch);
+      setNews(JSON.parse(localStorage.getItem('articles')));
+      setStartSearch(true);
+    }
+  }, [startSearch]);
 
   useEffect(() => {
-    getItems()
-      .then((items) => {
-        setSavedNews(items);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+    if (isLoggedIn) {
+      getItems(getToken())
+        .then((items) => {
+          setSavedNews(items);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  }, [isLoggedIn]);
 
   const closePopup = () => {
     setActiveModal('');
@@ -68,27 +80,54 @@ function App() {
   };
 
   const handleSignUp = (data) => {
-    openPopupSuccess();
+    signup(data)
+      .then((user) => {
+        openPopupSuccess();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
     setLoggedIn(false);
+    setCurrentUser({});
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('user');
   };
 
   const handleSignIn = (data) => {
-    setCurrentUser(data);
-    setLoggedIn(true);
-    localStorage.setItem('isLoggedIn', isLoggedIn);
-    closePopup();
+    signin(data)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem('jwt', res.token);
+          localStorage.setItem('isLoggedIn', true);
+          localStorage.setItem('user', JSON.stringify(res.user));
+        }
+        setCurrentUser(res.user);
+        setLoggedIn(true);
+        closePopup();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
-  const handleNewsMark = (article) => {
-    article.isMarked = true;
-    article.category = keyWord;
-    postItem(article)
+  const handleSaveNews = (article, callback) => {
+    const data = {
+      keyword: keyWord,
+      title: article.title,
+      description: article.description,
+      publishedAt: article.publishedAt,
+      source: article.source,
+      url: article.url,
+      urlToImage: article.urlToImage,
+    };
+    postItem(data, getToken())
       .then((res) => {
         setSavedNews([res, ...savedNews]);
+        if (callback) callback(res);
       })
       .catch((error) => {
         console.error(error);
@@ -100,9 +139,23 @@ function App() {
     setIsLoading(true);
     getNews(keyword)
       .then((res) => {
-        setNews(res.articles);
+        console.log(res);
+        const updatedArticles = res.articles.map((article) => ({
+          keyword: keyword,
+          title: article.title,
+          description: article.description,
+          publishedAt: article.publishedAt,
+          source: article.source.name,
+          url: article.url,
+          urlToImage: article.urlToImage,
+          _id: null,
+        }));
+        setNews(updatedArticles);
         setKeyWord(keyword);
-        localStorage.setItem('articles', JSON.stringify(res.articles));
+
+        // Update localStorage with the new schema
+        localStorage.setItem('keyword', keyword);
+        localStorage.setItem('articles', JSON.stringify(updatedArticles));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -112,7 +165,7 @@ function App() {
   };
 
   const handleDeleteNews = (article) => {
-    deleteItem(article._id)
+    deleteItem(article._id, getToken())
       .then(() => {
         const updatedList = savedNews.filter((item) => item._id !== article._id);
         setSavedNews(updatedList);
@@ -130,22 +183,31 @@ function App() {
           isLoggedIn,
         }}
       >
-        <BrowserRouter>
-          <Navbar openPopupRegister={openPopupRegister} handleLogout={handleLogout} activeModal={activeModal} />
+        <Navbar openPopupRegister={openPopupRegister} handleLogout={handleLogout} activeModal={activeModal} />
 
-          <Switch>
-            <ProtectedRoute isLoggedIn={isLoggedIn} path="/saved-news">
-              <SavedNews handleNewsMark={handleNewsMark} news={savedNews} handleDeleteNews={handleDeleteNews} />
-            </ProtectedRoute>
-            <Route exact path="/">
-              <Header handleSearch={handleSearch} />
+        <Switch>
+          <ProtectedRoute path="/saved-news">
+            <SavedNews news={savedNews} handleSaveNews={handleSaveNews} handleDeleteNews={handleDeleteNews} openPopupRegister={openPopupRegister} />
+          </ProtectedRoute>
+          <Route exact path="/">
+            <Header handleSearch={handleSearch} />
 
-              {startSearch && <SearchResults handleNewsMark={handleNewsMark} news={news} isLoading={isLoading} />}
-              <AboutAuthor />
-            </Route>
-          </Switch>
-          <Footer />
-        </BrowserRouter>
+            {startSearch && (
+              <SearchResults
+                news={news}
+                isLoading={isLoading}
+                handleSaveNews={handleSaveNews}
+                handleDeleteNews={handleDeleteNews}
+                openPopupRegister={openPopupRegister}
+              />
+            )}
+            <AboutAuthor />
+          </Route>
+
+          <Route render={() => <Redirect to="/" />} />
+        </Switch>
+        <Footer />
+
         {activeModal === 'success' && (
           <PopupSuccess handleClosePopup={closePopup} isOpen={activeModal === 'success'} openPopupSignIn={openPopupSignIn} />
         )}

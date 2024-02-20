@@ -1,13 +1,12 @@
 import checkResponse from './utils';
 
-const APIkey = 'b3adbd243efb49d68fdec8971a8ae4e1';
-const baseUrl = 'https://newsapi.org/v2/everything';
+const { REACT_APP_API_BASE_URL, REACT_APP_API_KEY } = process.env;
+
+// const baseUrl = 'https://newsapi.org/v2/everything';
 
 const headers = {
-  'X-Api-Key': APIkey,
+  'X-Api-Key': REACT_APP_API_KEY,
 };
-
-export { baseUrl, headers };
 
 // date as YYYY-MM-DD
 function formatDate(date) {
@@ -23,7 +22,7 @@ const to = formatDate(toDate);
 const pageSize = 100;
 
 export function getNews(q) {
-  const url = `${baseUrl}?q=${encodeURIComponent(q)}&from=${from}&to=${to}&pageSize=${pageSize}&apiKey=${APIkey}`;
+  const url = `${REACT_APP_API_BASE_URL}?q=${encodeURIComponent(q)}&from=${from}&to=${to}&pageSize=${pageSize}&apiKey=${REACT_APP_API_KEY}`;
   return fetch(url, {
     method: 'GET',
     headers: headers,
