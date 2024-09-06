@@ -1,6 +1,7 @@
 # News Explorer
 ![image](https://github.com/skovakina/se_news-explorer/assets/70713202/2d30895f-12bf-4e0a-be8c-61baa245e91f)
 
+[Site](https://svko-news-explorer.netlify.app)
 
 ## About the Project
 
@@ -20,6 +21,6 @@ A service where users can search for news articles and save them to their profil
 ### Design and Prototype
 
 Check out the Figma prototype for a visual idea of the app's design and layout:
-[Figma Prototype - News Explorer App]([https://www.figma.com/file/dQLJwEKasIdspciJAJrCaf/Sprint-11_-WTWR?node-id=311%3A1291&mode=dev](https://www.figma.com/file/z1bxDn7eBEDlsDhnZ9dtin/Your-Final-Project?node-id=0%3A1))
+[Figma Prototype](https://www.figma.com/file/dQLJwEKasIdspciJAJrCaf/Sprint-11_-WTWR?node-id=311%3A1291&mode=dev]
 
 
